@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.07f6d71c.css",
+    "main.js": "/static/js/main.c862f6aa.js",
+    "static/media/VP Logo.png": "/static/media/VP Logo.2648056aeadf28962125.png",
+    "static/media/Click Counter.png": "/static/media/Click Counter.6c9a68ff032737db0aab.png",
+    "static/media/Typing-Speed-Test.png": "/static/media/Typing-Speed-Test.fd77db274f1ef8d95f88.png",
+    "static/media/Whack a mole.png": "/static/media/Whack a mole.5f393b7f1165b495982d.png",
+    "static/media/Udaan.png": "/static/media/Udaan.139c98764451c7156447.png",
+    "static/media/Memory Flip Card.png": "/static/media/Memory Flip Card.eac1781b0e224a66cf37.png",
+    "static/media/Colour Guess.png": "/static/media/Colour Guess.54e8bad66084216b21b5.png",
+    "static/media/SU_Hack2.jpeg": "/static/media/SU_Hack2.c5f972ace16090fef6a0.jpeg",
+    "static/media/SU_ME.jpeg": "/static/media/SU_ME.7f57d7ab3cbf22d89e59.jpeg",
+    "static/media/SU_Hack1.jpeg": "/static/media/SU_Hack1.c880653110681c5805b0.jpeg",
+    "static/media/HTML SoloLearn Pic.png": "/static/media/HTML SoloLearn Pic.8be5ccfb57d90843c1ef.png",
+    "static/media/JavaScript SoloLearn Pic.png": "/static/media/JavaScript SoloLearn Pic.365e952e093f8f2416e2.png",
+    "static/media/C++ Pic.png": "/static/media/C++ Pic.dfe41b2cb9edbe5aa63a.png",
+    "static/media/CSS SoloLearn Pic.png": "/static/media/CSS SoloLearn Pic.a135cf861fc02db25d46.png",
+    "static/media/C SoloLearn  Pic.png": "/static/media/C SoloLearn  Pic.f2758999742686854cc4.png",
+    "static/media/SU_Hacathon.jpeg": "/static/media/SU_Hacathon.0f59c85850b95e3a36c8.jpeg",
+    "static/media/Professional Mee.jpeg": "/static/media/Professional Mee.ba1fe042676a539a2265.jpeg",
+    "static/media/LMS-Clone.png": "/static/media/LMS-Clone.74bad3c0b665a9728009.png",
+    "static/media/To-Do.png": "/static/media/To-Do.2d434deb8a80395a7dc1.png",
+    "static/media/Tic-Tac-Toe.png": "/static/media/Tic-Tac-Toe.50ef571c7bc795db8531.png",
+    "index.html": "/index.html",
+    "main.07f6d71c.css.map": "/static/css/main.07f6d71c.css.map",
+    "main.c862f6aa.js.map": "/static/js/main.c862f6aa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.07f6d71c.css",
+    "static/js/main.c862f6aa.js"
+  ]
+}
