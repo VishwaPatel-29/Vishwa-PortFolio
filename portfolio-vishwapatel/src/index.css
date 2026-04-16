@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --scrollbar-width: 8px;
+  
+  /* Unified Teal Color System */
+  --primary: #00998c;
+  --secondary: #085d56;
+  --bg-main: #000000;
+  --bg-card: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+  --text-muted: #9ca3af;
+  --border-primary: rgba(0, 153, 140, 0.2);
+  --border-secondary: rgba(0, 153, 140, 0.3);
+  --glow-primary: rgba(0, 153, 140, 0.4);
+  --glow-secondary: rgba(0, 153, 140, 0.6);
+  --glow-strong: rgba(0, 153, 140, 0.8);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.8s ease-out;
+}
+
+/* Particle Background */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Hover Effects */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-tilt {
+  transition: transform 0.3s ease;
+}
+
+.hover-tilt:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.02);
+}
+
+/* Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 20px var(--glow-secondary);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  padding: 12px 24px;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px var(--glow-secondary);
+}
+
+.dark .btn-secondary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.dark .btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 0 20px var(--glow-secondary);
+}
+
+/* Unified Teal Theme Classes */
+.btn-primary {
+  @apply bg-gradient-to-r from-[#085d56] to-[#00998c] text-white font-semibold rounded-lg;
+  @apply hover:scale-105 active:scale-95 hover:shadow-[0_0_25px_rgba(0,153,140,0.7)];
+  @apply transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply border-2 border-[#00998c] text-[#00998c] font-semibold rounded-lg;
+  @apply hover:bg-[#00998c] hover:text-white hover:scale-105 active:scale-95;
+  @apply hover:shadow-[0_0_20px_rgba(0,153,140,0.6)] transition-all duration-300;
+}
+
+.card {
+  @apply bg-[#0a0a0a] border border-[#00998c]/20;
+  @apply shadow-[0_0_50px_rgba(0,153,140,0.25)] rounded-2xl;
+}
+
+.glow-effect {
+  @apply shadow-[0_0_20px_rgba(0,153,140,0.6)];
+}
+
+.hover-teal {
+  @apply hover:text-[#00998c] transition-colors duration-200;
+}
+
+.focus-teal {
+  @apply focus:border-[#00998c] focus:ring-2 focus:ring-[#00998c]/20;
+}
+
+.bg-teal-gradient {
+  @apply bg-gradient-to-r from-[#085d56]/20 to-[#00998c]/20;
+}
+
+.text-teal {
+  @apply text-[#00998c];
+}
+
+.border-teal {
+  @apply border-[#00998c]/20;
+}
+
+/* Custom Cursor Styles */
+.cursor-none {
+  cursor: none !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Custom cursor hover states */
+.cursor-hover:hover {
+  cursor: none !important;
+}
+
+/* Disable default cursor on all interactive elements */
+a, button, input, textarea, select, [role="button"], .cursor-interactive {
+  cursor: none !important;
+}
+
+/* Smooth cursor transitions */
+.cursor-smooth {
+  transition: all 0.15s ease-out !important;
+}
+
+/* Cursor blend modes for different backgrounds */
+.cursor-multiply {
+  mix-blend-mode: multiply !important;
+}
+
+.cursor-difference {
+  mix-blend-mode: difference !important;
+}
+
+.cursor-screen {
+  mix-blend-mode: screen !important;
+}
+
+/* Hide text cursor */
+.hide-text-cursor {
+  caret-color: transparent !important;
+}
