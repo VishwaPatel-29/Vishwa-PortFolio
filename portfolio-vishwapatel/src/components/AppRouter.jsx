@@ -95,8 +95,7 @@ const AppRouterContent = () => {
           </>
         } />
       </Routes>
-      
-          </div>
+    </div>
   );
 };
 

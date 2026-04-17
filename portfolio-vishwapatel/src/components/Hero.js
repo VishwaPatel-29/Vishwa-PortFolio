@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaTwitter, FaYoutube, FaE
 import { SiLeetcode } from 'react-icons/si';
 import profileImg from '../assets/Professional Mee.jpeg';
 import logoImg from '../assets/VP_LOGO.png';
+import ResumeModal from './ResumeModal';
 
 const Hero = () => {
   const { isDarkMode } = useTheme();
@@ -16,6 +17,7 @@ const Hero = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
   const [rotateDirection, setRotateDirection] = useState('forward');
   const [isFlipped, setIsFlipped] = useState(false);
+  const [showResumeModal, setShowResumeModal] = useState(false);
 
   const roles = [
     "Aspiring Full-Stack Developer",
@@ -70,8 +72,8 @@ const Hero = () => {
   };
 
   const viewResume = () => {
-    // Open resume in new tab
-    window.open('https://vishwa-patel-resume.netlify.app/', '_blank');
+    // Open resume modal
+    setShowResumeModal(true);
   };
 
   const contactMe = () => {
@@ -362,6 +364,9 @@ const Hero = () => {
           </motion.div>
         </div>
       </motion.div>
+      
+      {/* Resume Modal */}
+      <ResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
     </section>
   );
 };

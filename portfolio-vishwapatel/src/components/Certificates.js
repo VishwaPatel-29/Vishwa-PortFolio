@@ -7,7 +7,7 @@ import suhacImg from '../assets/SU_Hacathon.jpeg';
 import htmlImg from '../assets/HTML SoloLearn Pic.png';
 import cssImg from '../assets/CSS SoloLearn Pic.png';
 import jsImg from '../assets/JavaScript SoloLearn Pic.png';
-import cImg from '../assets/C SoloLearn  Pic.png';
+import cImg from '../assets/C# SoloLearn Pic.png';
 import cppImg from '../assets/C++ Pic.png';
 
 const Certificates = ({ isHomePage = false }) => {

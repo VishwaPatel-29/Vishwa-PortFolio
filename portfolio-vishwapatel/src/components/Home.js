@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { FaGithub, FaLinkedin, FaTwitter, FaYoutube, FaEnvelope, FaCode, FaEye } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import Resume from './Resume';
+import OrbitalSkills from './OrbitalSkills';
 
 const Home = () => {
   const { isDarkMode } = useTheme();
@@ -290,6 +291,65 @@ const Home = () => {
           </motion.div>
         </div>
       </motion.div>
+
+      {/* Orbital Skills Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="py-20"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+              My Technical
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal to-purple">
+                Skills
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Explore my expertise in modern web development technologies. 
+              Click on any orbiting skill to see detailed information.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative h-[500px] bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl"
+          >
+            <OrbitalSkills className="h-full" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-8 text-center"
+          >
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-teal rounded-full animate-pulse" />
+                <span>Interactive 3D visualization</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-purple rounded-full animate-pulse" />
+                <span>Click for details</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-pink rounded-full animate-pulse" />
+                <span>Orbital movement</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
 
       {/* Resume Modal */}
       <Resume isOpen={showResume} onClose={() => setShowResume(false)} />

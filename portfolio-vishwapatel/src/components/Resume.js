@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import { FaDownload, FaTimes, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGraduationCap, FaBriefcase, FaCode, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaDownload, FaTimes, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaGraduationCap, FaBriefcase, FaCode, FaExternalLinkAlt, FaYoutube } from 'react-icons/fa';
 
 const Resume = ({ isOpen, onClose }) => {
   const { isDarkMode } = useTheme();
@@ -11,11 +11,11 @@ const Resume = ({ isOpen, onClose }) => {
       name: 'Vishwa Patel',
       title: 'Full Stack Developer',
       email: 'vishwa29patel.cg@gmail.com',
-      phone: '+1 (555) 123-4567',
-      location: 'New York, USA',
-      github: 'https://github.com',
-      linkedin: 'https://linkedin.com',
-      portfolio: 'https://vishwa-patel-portfolio.com'
+      phone: '+91 6352839671',
+      location: 'Ahmedabad,India',
+      github: 'https://github.com/VishwaPatel-29',
+      linkedin: 'https://www.linkedin.com/in/vishwa-patel-8664473a0/',
+      Youtube: 'https://www.youtube.com/@VishwaPatel-29h'
     },
     education: [
       {
