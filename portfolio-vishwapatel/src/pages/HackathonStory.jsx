@@ -178,20 +178,22 @@ const HackathonStory = () => {
                 rotate: [2, -2, 0]
               }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="group inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_20px_rgba(0,153,140,0.3)] border border-[#00998c]/30 hover:shadow-[0_0_30px_rgba(0,153,140,0.5)] transition-all duration-300"
+              className="group inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_20px_rgba(0,153,140,0.3)] border border-[#00998c]/30 hover:shadow-[0_0_30px_rgba(0,153,140,0.5)] transition-all duration-300"
             >
               <motion.div
                 animate={{ x: [0, -2, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
-                <FaArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300" />
+                <FaArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 group-hover:-translate-x-1 transition-transform duration-300" />
               </motion.div>
-              <span>Back to Hackathon</span>
+              <span className="hidden sm:inline">Back to Hackathon</span>
+              <span className="sm:hidden">Back</span>
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="hidden sm:block"
               >
-                <FaTrophy className="text-lg" />
+                <FaTrophy className="text-sm sm:text-lg" />
               </motion.div>
             </motion.button>
 
@@ -209,20 +211,22 @@ const HackathonStory = () => {
                 rotate: [-2, 2, 0]
               }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="group inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_20px_rgba(0,153,140,0.3)] border border-[#00998c]/30 hover:shadow-[0_0_30px_rgba(0,153,140,0.5)] transition-all duration-300"
+              className="group inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_20px_rgba(0,153,140,0.3)] border border-[#00998c]/30 hover:shadow-[0_0_30px_rgba(0,153,140,0.5)] transition-all duration-300"
             >
-              <span>Go to Portfolio</span>
+              <span className="hidden sm:inline">Go to Portfolio</span>
+              <span className="sm:hidden">Portfolio</span>
               <motion.div
                 animate={{ x: [0, 2, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
-                <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.div>
               <motion.div
                 animate={{ y: [0, -3, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="hidden sm:block"
               >
-                <FaRocket className="text-lg" />
+                <FaRocket className="text-sm sm:text-lg" />
               </motion.div>
             </motion.button>
           </div>
@@ -244,7 +248,7 @@ const HackathonStory = () => {
               className="relative inline-block"
             >
               <motion.h1 
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 relative flex items-center justify-center gap-4"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 relative flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4"
                 animate={{
                   scale: [1, 1.02, 1],
                   textShadow: [
@@ -260,7 +264,7 @@ const HackathonStory = () => {
                 }}
               >
                 <motion.span 
-                  className="bg-gradient-to-r from-[#00998c] to-[#085d56] bg-clip-text text-transparent"
+                  className="bg-gradient-to-r from-[#00998c] to-[#085d56] bg-clip-text text-transparent text-center"
                   animate={{ opacity: [0.8, 1, 0.8] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
@@ -277,7 +281,7 @@ const HackathonStory = () => {
                     ease: "easeInOut"
                   }}
                 >
-                  <FaRocket className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#00998c]" />
+                  <FaRocket className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#00998c]" />
                 </motion.div>
               </motion.h1>
               
@@ -301,7 +305,7 @@ const HackathonStory = () => {
 
             <motion.p
               variants={itemVariants}
-              className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+              className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed px-4"
             >
               A 36-hour intensive hackathon experience that transformed my approach to educational technology and innovation
             </motion.p>
@@ -312,7 +316,7 @@ const HackathonStory = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid lg:grid-cols-2 gap-8 mb-16"
+            className="grid lg:grid-cols-2 md:grid-cols-1 gap-8 mb-16"
           >
             {/* The Challenge Card */}
             <motion.div
@@ -324,9 +328,9 @@ const HackathonStory = () => {
                 borderColor: "rgba(0, 153, 140, 0.5)"
               }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)] hover:shadow-[0_0_60px_rgba(0,153,140,0.2)] transition-all duration-300"
+              className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-4 sm:p-6 md:p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)] hover:shadow-[0_0_60px_rgba(0,153,140,0.2)] transition-all duration-300"
             >
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <motion.div 
                   animate={{ 
                     rotate: [0, 360],
@@ -336,14 +340,14 @@ const HackathonStory = () => {
                     rotate: { duration: 8, repeat: Infinity, ease: "linear" },
                     scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
                   }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-lg"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center shadow-lg"
                 >
-                  <FaRocket className="text-3xl text-white" />
+                  <FaRocket className="text-xl sm:text-3xl text-white" />
                 </motion.div>
                 <motion.h2 
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                  className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
                 >
                   The Challenge
                 </motion.h2>
@@ -377,9 +381,9 @@ const HackathonStory = () => {
                 borderColor: "rgba(0, 153, 140, 0.5)"
               }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)] hover:shadow-[0_0_60px_rgba(0,153,140,0.2)] transition-all duration-300"
+              className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-4 sm:p-6 md:p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)] hover:shadow-[0_0_60px_rgba(0,153,140,0.2)] transition-all duration-300"
             >
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <motion.div 
                   animate={{ 
                     rotate: [0, -360],
@@ -389,14 +393,14 @@ const HackathonStory = () => {
                     rotate: { duration: 10, repeat: Infinity, ease: "linear" },
                     scale: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
                   }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg"
                 >
-                  <FaLightbulb className="text-3xl text-white" />
+                  <FaLightbulb className="text-xl sm:text-3xl text-white" />
                 </motion.div>
                 <motion.h2 
                   animate={{ x: [0, -5, 0] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
+                  className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
                 >
                   My Solution
                 </motion.h2>
@@ -407,7 +411,7 @@ const HackathonStory = () => {
                   Developed an skillsense AI platform that provides personalized learning paths and real-time feedback to students, enhancing engagement and improving learning outcomes.Help Students to travk their daily Learning.
                 </p>
                 
-                <div className="grid grid-cols-2 gap-3 mt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
                   <div className="flex items-start gap-2 bg-purple-500/20 border border-purple-500/30 rounded-lg p-3">
                     <FaBrain className="text-xl text-white mt-1 flex-shrink-0" />
                     <div>
@@ -448,25 +452,25 @@ const HackathonStory = () => {
             animate="visible"
             className="mb-16"
           >
-            <div className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)]">
-              <div className="flex items-center gap-4 mb-6">
+            <div className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-4 sm:p-6 md:p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)]">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <motion.div
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center shadow-lg"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center shadow-lg"
                 >
-                  <FaStar className="text-3xl text-white" />
+                  <FaStar className="text-xl sm:text-3xl text-white" />
                 </motion.div>
                 <motion.h2 
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-3xl font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent"
+                  className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent"
                 >
                   The Impact
                 </motion.h2>
               </div>
               
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
                   className="text-center bg-purple-500/10 border border-purple-500/20 rounded-lg p-4"
@@ -511,25 +515,25 @@ const HackathonStory = () => {
             animate="visible"
             className="mb-16"
           >
-            <div className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)]">
-              <div className="flex items-center gap-4 mb-6">
+            <div className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-4 sm:p-6 md:p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)]">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <motion.div
                   animate={{ rotate: [0, 15, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg"
                 >
-                  <FaTrophy className="text-3xl text-white" />
+                  <FaTrophy className="text-xl sm:text-3xl text-white" />
                 </motion.div>
                 <motion.h2 
                   animate={{ x: [0, 3, 0] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
+                  className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
                 >
                   Key Achievements
                 </motion.h2>
               </div>
               
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="flex items-start gap-4 bg-[#00998c]/10 border border-[#00998c]/20 rounded-lg p-4"
@@ -592,19 +596,19 @@ const HackathonStory = () => {
             animate="visible"
             className="mb-16"
           >
-            <div className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)]">
-              <div className="flex items-center gap-4 mb-6">
+            <div className="bg-[#0a0a0a] border border-[#00998c]/20 rounded-2xl p-4 sm:p-6 md:p-8 shadow-[0_0_40px_rgba(0,153,140,0.1)]">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <motion.div
                   animate={{ rotate: [0, 360, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-r from-indigo-400 to-purple-500 flex items-center justify-center shadow-lg"
+                  className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-indigo-400 to-purple-500 flex items-center justify-center shadow-lg"
                 >
-                  <FaCode className="text-3xl text-white" />
+                  <FaCode className="text-xl sm:text-3xl text-white" />
                 </motion.div>
                 <motion.h2 
                   animate={{ opacity: [0.8, 1, 0.8] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent"
+                  className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent"
                 >
                   Lessons Learned
                 </motion.h2>
@@ -645,7 +649,7 @@ const HackathonStory = () => {
               }}
               transition={{ type: "spring", stiffness: 300 }}
               onClick={() => window.open('https://skillsense-ai-seven.vercel.app/', '_blank')}
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full text-lg font-bold bg-gradient-to-r from-[#00998c] via-[#085d56] to-[#00998c] text-white shadow-[0_0_40px_rgba(0,153,140,0.4)] border-2 border-[#00998c]/50 hover:shadow-[0_0_80px_rgba(0,153,140,0.6)] transition-all duration-300 relative overflow-hidden"
+              className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base lg:text-lg font-bold bg-gradient-to-r from-[#00998c] via-[#085d56] to-[#00998c] text-white shadow-[0_0_40px_rgba(0,153,140,0.4)] border-2 border-[#00998c]/50 hover:shadow-[0_0_80px_rgba(0,153,140,0.6)] transition-all duration-300 relative overflow-hidden"
             >
               {/* Animated background gradient */}
               <motion.div
@@ -660,15 +664,23 @@ const HackathonStory = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-10"
               >
-                <span className="text-2xl">🚀</span>
+                <span className="text-lg sm:text-xl xl:text-2xl">?rocket:</span>
               </motion.div>
               
               <motion.span 
-                className="relative z-10"
+                className="relative z-10 hidden sm:inline"
                 animate={{ x: [0, 3, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
                 View Skillsense AI Live
+              </motion.span>
+              
+              <motion.span 
+                className="relative z-10 sm:hidden"
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                View Live
               </motion.span>
               
               <motion.div
@@ -676,15 +688,15 @@ const HackathonStory = () => {
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative z-10"
               >
-                <FaPlay className="text-xl group-hover:text-yellow-300 transition-colors duration-300" />
+                <FaPlay className="text-lg sm:text-xl group-hover:text-yellow-300 transition-colors duration-300" />
               </motion.div>
               
               <motion.div
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                className="relative z-10"
+                className="relative z-10 hidden sm:block"
               >
-                <FaExternalLinkAlt className="text-lg group-hover:text-cyan-300 transition-colors duration-300" />
+                <FaExternalLinkAlt className="text-base sm:text-lg group-hover:text-cyan-300 transition-colors duration-300" />
               </motion.div>
               
               {/* Glow effect on hover */}
