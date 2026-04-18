@@ -7,8 +7,10 @@ const EMAILJS_CONFIG = {
   PUBLIC_KEY: process.env.REACT_APP_EMAILJS_PUBLIC_KEY
 };
 
-// Initialize EmailJS
-emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+// Initialize EmailJS only if configuration is available
+if (EMAILJS_CONFIG.PUBLIC_KEY) {
+  emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+}
 
 export const sendEmail = async (formData) => {
   try {
@@ -19,6 +21,26 @@ export const sendEmail = async (formData) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
       throw new Error('Please enter a valid email address');
+    }
+
+    // Check if EmailJS is configured
+    if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.PUBLIC_KEY) {
+      // Fallback: simulate email sending for demo purposes
+      console.log('EmailJS not configured. Simulating email send:', {
+        from: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+        to: 'vishwa29patel.cg@gmail.com',
+        timestamp: new Date().toLocaleString()
+      });
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      return {
+        success: true,
+        message: "Message received! (Demo mode - EmailJS not configured)"
+      };
     }
 
     const templateParams = {
@@ -35,7 +57,7 @@ export const sendEmail = async (formData) => {
       EMAILJS_CONFIG.SERVICE_ID,
       EMAILJS_CONFIG.TEMPLATE_ID,
       templateParams,
-      EMAILJS_CONFIG.PUBLIC_KEY // ✅ important
+      EMAILJS_CONFIG.PUBLIC_KEY
     );
 
     return {
@@ -50,7 +72,7 @@ export const sendEmail = async (formData) => {
       errorMessage = error.text;
     } else if (error.message) {
       errorMessage = error.message;
-    } else if (!process.env.REACT_APP_EMAILJS_SERVICE_ID || !process.env.REACT_APP_EMAILJS_TEMPLATE_ID || !process.env.REACT_APP_EMAILJS_PUBLIC_KEY) {
+    } else if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.PUBLIC_KEY) {
       errorMessage = 'Email service not configured. Please check your environment variables.';
     }
 
