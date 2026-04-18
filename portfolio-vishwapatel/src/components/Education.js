@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import VP_LOGO from '../assets/VP_LOGO.png';
 
 const Education = () => {
   const { isDarkMode } = useTheme();

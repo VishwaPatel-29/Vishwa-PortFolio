@@ -19,6 +19,7 @@ import {
   FaExternalLinkAlt,
   FaPlay
 } from 'react-icons/fa';
+import VP_LOGO from '../assets/VP_LOGO.png';
 import { Helmet } from 'react-helmet';
 
 const HackathonStory = () => {

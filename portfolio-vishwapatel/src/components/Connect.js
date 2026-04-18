@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import { sendEmail, validateFormData } from '../services/emailService';
 import { FaPaperPlane, FaSpinner, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import VP_LOGO from '../assets/VP_LOGO.png';
 
 const Connect = () => {
   const { isDarkMode } = useTheme();

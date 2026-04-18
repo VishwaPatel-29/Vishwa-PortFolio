@@ -11,6 +11,7 @@ import {
   FaFigma
 } from 'react-icons/fa';
 import { SiTailwindcss, SiMongodb } from 'react-icons/si';
+import VP_LOGO from '../assets/VP_LOGO.png';
 
 const TechOrbit = () => {
   const [rotation, setRotation] = useState(0);
