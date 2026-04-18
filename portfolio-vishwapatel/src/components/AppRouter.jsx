@@ -15,6 +15,7 @@ import HackathonAchievement from '../pages/HackathonAchievement';
 import HackathonStory from '../pages/HackathonStory';
 import { ThemeProvider } from '../context/ThemeContext';
 import CustomCursor from './CustomCursor';
+import AIChatWidget from './AIChatWidget';
 import '../index.css';
 
 const AppRouterContent = () => {

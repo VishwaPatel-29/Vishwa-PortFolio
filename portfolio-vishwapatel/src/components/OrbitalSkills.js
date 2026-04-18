@@ -150,7 +150,7 @@ const skillsData = [
 
 // Centered 2-layer orbital skill component
 function OrbitalSkill({ skill, index, layerSkills, hoveredSkill, setHoveredSkill }) {
-  const [angle, setAngle] = useState((index / layerSkills.length) * 360);
+  const [angle, setAngle] = useState((index * 360) / layerSkills.length);
   const orbitSpeed = 0.5 + (skill.layer * 0.2);
   
   useEffect(() => {
@@ -266,7 +266,7 @@ function ConnectionLines({ hoveredSkill }) {
       {skillsData.map((skill, index) => {
         const layerSkills = skillsData.filter(s => s.layer === skill.layer);
         const skillIndex = layerSkills.findIndex(s => s.name === skill.name);
-        const angle = (skillIndex / layerSkills.length) * 360;
+        const angle = (skillIndex * 360) / layerSkills.length;
         const radius = skill.layer === 1 ? 120 : 200;
         const x = Math.cos((angle * Math.PI) / 180) * radius + 300;
         const y = Math.sin((angle * Math.PI) / 180) * radius + 300;
