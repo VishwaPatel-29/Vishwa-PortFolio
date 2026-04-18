@@ -262,7 +262,7 @@ function ConnectionLines({ hoveredSkill }) {
   };
   
   return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 600">
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 25 }} viewBox="0 0 600 600">
       {skillsData.map((skill, index) => {
         const layerSkills = skillsData.filter(s => s.layer === skill.layer);
         const skillIndex = layerSkills.findIndex(s => s.name === skill.name);
@@ -440,12 +440,16 @@ const OrbitalSkills = ({ className = "" }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'relative'
+        position: 'relative',
+        zIndex: 100,
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backdropFilter: 'blur(10px)'
       }}
     >
       {/* SVG wrapper for proper scaling */}
       <div 
         className="absolute inset-0 flex items-center justify-center w-full h-full max-w-[600px] max-h-[600px] mx-auto scale-75 sm:scale-90 md:scale-100"
+        style={{ zIndex: 50 }}
       >
         {/* Equal 2-layer connection lines */}
         <ConnectionLines hoveredSkill={hoveredSkill} />

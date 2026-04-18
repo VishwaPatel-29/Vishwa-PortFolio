@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Premium3DSkills from '../components/Premium3DSkills';
-import OrbitalSkills from '../components/OrbitalSkills';
+import UniqueSkillsShowcase from '../components/UniqueSkillsShowcase';
 import { Helmet } from 'react-helmet';
 
 const SkillsPage = () => {
@@ -53,27 +53,25 @@ const SkillsPage = () => {
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Explore my expertise in modern web development technologies. 
-              Interactive orbital visualization with detailed skill information.
+              Unique interactive skills universe with dynamic visual effects.
             </p>
           </div>
           
-          <div className="relative h-[700px] bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl mb-16">
-            <OrbitalSkills className="h-full" />
-          </div>
+          <UniqueSkillsShowcase />
           
           <div className="text-center mb-16">
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal rounded-full animate-pulse" />
-                <span>Interactive orbital visualization</span>
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                <span>Interactive skills universe</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple rounded-full animate-pulse" />
-                <span>Hover for details</span>
+                <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
+                <span>Dynamic visual effects</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-pink rounded-full animate-pulse" />
-                <span>Circular movement</span>
+                <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" />
+                <span>Floating particle animations</span>
               </div>
             </div>
           </div>

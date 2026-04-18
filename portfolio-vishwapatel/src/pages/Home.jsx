@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from '../context/ThemeContext';
 import About from '../components/About';
-import OrbitalSkills from '../components/OrbitalSkills';
+import UniqueSkillsShowcase from '../components/UniqueSkillsShowcase';
 import Education from '../components/Education';
 import Projects from '../components/Projects';
 import Certificates from '../components/Certificates';
@@ -27,26 +27,27 @@ const HomePage = () => {
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Explore my expertise in modern web development technologies. 
+              Unique interactive skills universe with dynamic visual effects.
             </p>
           </div>
           
-          <div className="relative h-[700px] bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl">
-            <OrbitalSkills className="h-full" />
+          <div className="relative min-h-[600px] bg-gradient-to-br from-gray-900/50 to-gray-800/50 rounded-3xl overflow-hidden border border-gray-700/50 shadow-2xl">
+            <UniqueSkillsShowcase />
           </div>
           
           <div className="mt-8 text-center">
             <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-teal rounded-full animate-pulse" />
-                <span>Interactive orbital visualization</span>
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                <span>Interactive skills universe</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple rounded-full animate-pulse" />
-                <span>Click for details</span>
+                <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
+                <span>Dynamic visual effects</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-pink rounded-full animate-pulse" />
-                <span>Circular movement</span>
+                <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" />
+                <span>Floating particle animations</span>
               </div>
             </div>
           </div>
