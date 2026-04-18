@@ -11,7 +11,11 @@
   <a href="https://www.linkedin.com/in/vishwa-patel-29/">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
+<<<<<<< HEAD
   <a href="mailto:vishwa29patel.cg@gmail.com">
+=======
+  <a href="mailto:vishwapatel29@example.com">
+>>>>>>> 4074b8957e471c596b5bd1055e377fd69daf423c
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
   </a>
   <a href="https://leetcode.com/u/vishwapatel29/">
@@ -282,4 +286,8 @@ Feel free to fork this project and submit pull requests! 🎉
   <img src="https://komarev.com/ghpvc/?username=VishwaPatel-29&style=for-the-badge&color=00FF88" alt="Profile Views"/>
   <p>⭐ Star this repository if it inspired you!</p>
   <p>Made with ❤️ and lots of ☕ by Vishwa Patel</p>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 4074b8957e471c596b5bd1055e377fd69daf423c
