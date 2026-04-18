@@ -23,8 +23,7 @@ const skillsData = {
   layer3: [
     { name: 'Git', category: 'Tools', level: 'Advanced', color: '#F05032' },
     { name: 'GitHub', category: 'Tools', level: 'Advanced', color: '#181717' },
-    { name: 'TypeScript', category: 'Programming', level: 'Advanced', color: '#3178C6' },
-    { name: 'Python', category: 'Programming', level: 'Intermediate', color: '#3776AB' },
+        { name: 'Python', category: 'Programming', level: 'Intermediate', color: '#3776AB' },
     { name: 'C++', category: 'Programming', level: 'Intermediate', color: '#00599C' },
     { name: 'C', category: 'Programming', level: 'Advanced', color: '#A8B9CC' }
   ]

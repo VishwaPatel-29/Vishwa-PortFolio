@@ -8,8 +8,7 @@ const UniqueSkillsShowcase = () => {
     // Frontend Skills
     { name: 'React', icon: 'react', emoji: 'React', color: '#61DAFB', category: 'frontend' },
     { name: 'JavaScript', icon: 'js', emoji: 'JS', color: '#F7DF1E', category: 'frontend' },
-    { name: 'TypeScript', icon: 'ts', emoji: 'TS', color: '#3178C6', category: 'frontend' },
-    { name: 'HTML5', icon: 'html', emoji: 'HTML', color: '#E34C26', category: 'frontend' },
+        { name: 'HTML5', icon: 'html', emoji: 'HTML', color: '#E34C26', category: 'frontend' },
     { name: 'CSS3', icon: 'css', emoji: 'CSS', color: '#1572B6', category: 'frontend' },
     { name: 'Tailwind CSS', icon: 'tailwind', emoji: 'Tailwind', color: '#06B6D4', category: 'frontend' },
     
