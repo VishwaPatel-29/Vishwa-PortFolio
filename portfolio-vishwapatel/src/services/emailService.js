@@ -41,7 +41,7 @@ export const sendEmail = async (formData) => {
       
       return {
         success: true,
-        message: "Message sent successfully! I'll get back to you soon."
+        message: "Demo mode: Email service not configured. Please contact directly at vishwa29patel.cg@gmail.com"
       };
     }
 
