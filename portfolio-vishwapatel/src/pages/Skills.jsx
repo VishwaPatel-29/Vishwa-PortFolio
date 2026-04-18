@@ -5,6 +5,7 @@ import { FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Premium3DSkills from '../components/Premium3DSkills';
 import OrbitalSkills from '../components/OrbitalSkills';
+import { Helmet } from 'react-helmet';
 
 const SkillsPage = () => {
   const { isDarkMode } = useTheme();
@@ -15,6 +16,14 @@ const SkillsPage = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Skills - Vishwa Patel | Full Stack Developer</title>
+        <meta name="description" content="Explore the technical skills of Vishwa Patel - Full Stack Developer with expertise in React, JavaScript, Node.js, and modern web technologies" />
+        <meta name="keywords" content="Skills, Vishwa Patel, React, JavaScript, Node.js, Full Stack Developer, Web Development" />
+        <meta property="og:title" content="Skills - Vishwa Patel" />
+        <meta property="og:description" content="Discover the comprehensive technical skill set of Vishwa Patel" />
+      </Helmet>
     <div className={`min-h-screen ${isDarkMode ? 'bg-dark-bg' : 'bg-light-bg'}`}>
       <div className="pt-20">
         {/* Back to Home Button */}
@@ -74,6 +83,7 @@ const SkillsPage = () => {
         {/* <Premium3DSkills /> */}
       </div>
     </div>
+    </>
   );
 };
 

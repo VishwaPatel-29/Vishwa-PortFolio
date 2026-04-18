@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import About from '../components/About';
+import { Helmet } from 'react-helmet';
 
 const AboutPage = () => {
   const { isDarkMode } = useTheme();
@@ -14,6 +15,14 @@ const AboutPage = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>About - Vishwa Patel | Full Stack Developer</title>
+        <meta name="description" content="Learn more about Vishwa Patel - Full Stack Developer with expertise in React, JavaScript, and modern web technologies" />
+        <meta name="keywords" content="About Vishwa Patel, Full Stack Developer, Web Developer, React Developer, Portfolio" />
+        <meta property="og:title" content="About Vishwa Patel" />
+        <meta property="og:description" content="Discover the journey and skills of Vishwa Patel as a Full Stack Developer" />
+      </Helmet>
     <div className={`min-h-screen ${isDarkMode ? 'bg-dark-bg' : 'bg-light-bg'}`}>
       <div className="pt-20">
         {/* Back to Home Button */}
@@ -38,8 +47,9 @@ const AboutPage = () => {
         {/* About Content */}
         <About />
 
-              </div>
+      </div>
     </div>
+    </>
   );
 };
 

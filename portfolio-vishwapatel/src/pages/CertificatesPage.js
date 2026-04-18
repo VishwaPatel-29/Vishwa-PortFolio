@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import Certificates from '../components/Certificates';
-import { FaHome } from 'react-icons/fa';
+import { FaArrowLeft, FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import Certificates from '../components/Certificates';
+import { Helmet } from 'react-helmet';
 
 const CertificatesPage = () => {
   const { isDarkMode } = useTheme();
@@ -14,6 +15,14 @@ const CertificatesPage = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Certificates - Vishwa Patel | Full Stack Developer</title>
+        <meta name="description" content="View certificates and achievements of Vishwa Patel - Full Stack Developer with professional certifications" />
+        <meta name="keywords" content="Certificates, Vishwa Patel, Full Stack Developer, Achievements, Professional Certifications" />
+        <meta property="og:title" content="Certificates - Vishwa Patel" />
+        <meta property="og:description" content="Explore professional certificates and achievements of Vishwa Patel" />
+      </Helmet>
     <div className={`min-h-screen ${isDarkMode ? 'bg-dark-bg' : 'bg-light-bg'}`}>
       <div className="pt-20">
         {/* Back to Home Button */}
@@ -40,6 +49,7 @@ const CertificatesPage = () => {
 
               </div>
     </div>
+    </>
   );
 };
 

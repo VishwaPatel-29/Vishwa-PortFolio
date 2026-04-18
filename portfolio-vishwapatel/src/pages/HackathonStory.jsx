@@ -19,6 +19,7 @@ import {
   FaExternalLinkAlt,
   FaPlay
 } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 
 const HackathonStory = () => {
   const navigate = useNavigate();
@@ -118,27 +119,35 @@ const HackathonStory = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Background Effects */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00998c]/5 via-transparent to-[#085d56]/5" />
-        <motion.div
-          className="absolute inset-0 opacity-20"
-          animate={{
-            background: [
-              'radial-gradient(circle at 20% 50%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)',
-              'radial-gradient(circle at 80% 50%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 20%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)',
-              'radial-gradient(circle at 50% 80%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)',
-              'radial-gradient(circle at 20% 50%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)'
-            ]
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+    <>
+      <Helmet>
+        <title>Hackathon Story - Vishwa Patel | Full Stack Developer</title>
+        <meta name="description" content="Read the hackathon journey of Vishwa Patel - Full Stack Developer and problem solver" />
+        <meta name="keywords" content="Hackathon, Vishwa Patel, Full Stack Developer, Coding Competition, Innovation" />
+        <meta property="og:title" content="Hackathon Story - Vishwa Patel" />
+        <meta property="og:description" content="Discover the hackathon journey and experiences of Vishwa Patel" />
+      </Helmet>
+      <div className="min-h-screen bg-black text-white overflow-x-hidden">
+        {/* Background Effects */}
+        <div className="fixed inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#00998c]/5 via-transparent to-[#085d56]/5" />
+          <motion.div
+            className="absolute inset-0 opacity-20"
+            animate={{
+              background: [
+                "radial-gradient(circle at 20% 50%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)",
+                "radial-gradient(circle at 80% 50%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)",
+                "radial-gradient(circle at 50% 20%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)",
+                "radial-gradient(circle at 50% 80%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)",
+                "radial-gradient(circle at 20% 50%, rgba(0, 153, 140, 0.2) 0%, transparent 50%)"
+              ]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
       </div>
 
       {/* Navigation Bar */}
@@ -702,6 +711,7 @@ const HackathonStory = () => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 

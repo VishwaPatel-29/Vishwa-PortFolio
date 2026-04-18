@@ -4,12 +4,21 @@ import { useTheme } from '../context/ThemeContext';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Projects from '../components/Projects';
+import { Helmet } from 'react-helmet';
 
 const ProjectsPage = () => {
   const { isDarkMode } = useTheme();
   const navigate = useNavigate();
 
   return (
+    <>
+      <Helmet>
+        <title>Projects - Vishwa Patel | Full Stack Developer</title>
+        <meta name="description" content="Explore projects by Vishwa Patel - Full Stack Developer featuring React, JavaScript, and modern web applications" />
+        <meta name="keywords" content="Projects, Vishwa Patel, Full Stack Developer, React Projects, Web Development, Portfolio" />
+        <meta property="og:title" content="Projects - Vishwa Patel" />
+        <meta property="og:description" content="Discover innovative web development projects by Vishwa Patel" />
+      </Helmet>
     <div className={`min-h-screen ${isDarkMode ? 'bg-dark-bg' : 'bg-light-bg'}`}>
       {/* Page Header */}
       <div className="pt-20 pb-12">
@@ -54,7 +63,8 @@ const ProjectsPage = () => {
       {/* Projects Component */}
       <Projects isHomePage={false} />
 
-          </div>
+    </div>
+    </>
   );
 };
 

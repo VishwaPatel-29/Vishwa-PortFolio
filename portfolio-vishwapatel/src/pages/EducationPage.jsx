@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import { FaHome } from 'react-icons/fa';
+import { FaArrowLeft, FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Education from '../components/Education';
+import { Helmet } from 'react-helmet';
 
 const EducationPage = () => {
   const { isDarkMode } = useTheme();
@@ -11,6 +12,14 @@ const EducationPage = () => {
 
   
   return (
+    <>
+      <Helmet>
+        <title>Education - Vishwa Patel | Full Stack Developer</title>
+        <meta name="description" content="View educational background of Vishwa Patel - Full Stack Developer with academic achievements" />
+        <meta name="keywords" content="Education, Vishwa Patel, Full Stack Developer, Academic Background, Qualifications" />
+        <meta property="og:title" content="Education - Vishwa Patel" />
+        <meta property="og:description" content="Explore educational journey and qualifications of Vishwa Patel" />
+      </Helmet>
     <div className={`min-h-screen ${isDarkMode ? 'bg-dark-bg' : 'bg-light-bg'}`}>
       <div className="pt-20">
         {/* Back to Home Button */}
@@ -37,6 +46,7 @@ const EducationPage = () => {
 
               </div>
     </div>
+    </>
   );
 };
 

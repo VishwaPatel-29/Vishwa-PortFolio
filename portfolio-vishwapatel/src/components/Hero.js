@@ -7,6 +7,7 @@ import { SiLeetcode } from 'react-icons/si';
 import profileImg from '../assets/Professional Mee.jpeg';
 import logoImg from '../assets/VP_LOGO.png';
 import ResumeModal from './ResumeModal';
+import { Helmet } from 'react-helmet';
 
 const Hero = () => {
   const { isDarkMode } = useTheme();
@@ -86,7 +87,20 @@ const Hero = () => {
   };
 
   return (
-    <section className={`min-h-screen ${isDarkMode ? 'bg-slate-900' : 'bg-gray-100'} flex items-center justify-center px-10 sm:px-10 lg:px-10 overflow-hidden`}>
+    <>
+      <Helmet>
+        <title>Vishwa Patel | Software Engineer | React Developer | Portfolio</title>
+        <meta name="description" content="Vishwa Patel - Aspiring Full Stack Developer showcasing web development projects, skills, and creative coding solutions" />
+        <meta name="keywords" content="Vishwa Patel, Full Stack Developer, Web Developer, React, JavaScript, Portfolio, Projects, Skills" />
+        <meta name="author" content="Vishwa Patel" />
+        <meta property="og:title" content="Vishwa Patel - Full Stack Developer" />
+        <meta property="og:description" content="Aspiring Full Stack Developer showcasing innovative web development projects and technical skills" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vishwa Patel - Full Stack Developer" />
+        <meta name="twitter:description" content="Creative Full Stack Developer with expertise in React, JavaScript, and modern web technologies" />
+      </Helmet>
+      <section className={`min-h-screen ${isDarkMode ? 'bg-slate-900' : 'bg-gray-100'} flex items-center justify-center px-10 sm:px-10 lg:px-10 overflow-hidden`}>
       {/* Background gradient effect */}
       <div className={`absolute inset-0 ${isDarkMode ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' : 'bg-gradient-to-br from-gray-100 via-gray-200 to-gray-100'}`}>
         <div className={`absolute inset-0 ${isDarkMode ? 'bg-gradient-to-r from-teal-500/10 via-cyan-500/10 to-blue-500/10' : 'bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10'}`} />
@@ -368,6 +382,7 @@ const Hero = () => {
       {/* Resume Modal */}
       <ResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
     </section>
+    </>
   );
 };
 

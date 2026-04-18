@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import { FaHome } from 'react-icons/fa';
+import { FaArrowLeft, FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Connect from '../components/Connect';
+import { Helmet } from 'react-helmet';
 
 const ContactPage = () => {
   const { isDarkMode } = useTheme();
@@ -14,6 +15,14 @@ const ContactPage = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Contact - Vishwa Patel | Full Stack Developer</title>
+        <meta name="description" content="Contact Vishwa Patel - Full Stack Developer for collaborations and opportunities" />
+        <meta name="keywords" content="Contact, Vishwa Patel, Full Stack Developer, Get in Touch, Collaboration" />
+        <meta property="og:title" content="Contact - Vishwa Patel" />
+        <meta property="og:description" content="Get in touch with Vishwa Patel for collaborations and opportunities" />
+      </Helmet>
     <div className={`min-h-screen ${isDarkMode ? 'bg-dark-bg' : 'bg-light-bg'}`}>
       <div className="pt-20">
         {/* Back to Home Button */}
@@ -40,6 +49,7 @@ const ContactPage = () => {
 
               </div>
     </div>
+    </>
   );
 };
 
