@@ -7,16 +7,6 @@ const EMAILJS_CONFIG = {
   PUBLIC_KEY: process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'key_default'
 };
 
-// Temporary: Add your actual EmailJS credentials here for production
-// Remove this after setting up Vercel environment variables
-if (process.env.NODE_ENV === 'production' && 
-    EMAILJS_CONFIG.SERVICE_ID === 'service_default') {
-  // Replace these with your actual EmailJS credentials
-  EMAILJS_CONFIG.SERVICE_ID = 'your_service_id_here';
-  EMAILJS_CONFIG.TEMPLATE_ID = 'your_template_id_here';
-  EMAILJS_CONFIG.PUBLIC_KEY = 'your_public_key_here';
-}
-
 // Initialize EmailJS only if configuration is available
 if (EMAILJS_CONFIG.PUBLIC_KEY && EMAILJS_CONFIG.PUBLIC_KEY !== 'key_default') {
   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
