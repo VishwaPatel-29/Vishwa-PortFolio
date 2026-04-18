@@ -73,7 +73,7 @@ const HackathonAchievement = () => {
   };
 
   return (
-    <div className="h-screen bg-black flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-8 relative overflow-hidden">
       
       {/* Animated Background Gradient Blobs */}
       <motion.div
@@ -141,7 +141,7 @@ const HackathonAchievement = () => {
           scale: 1.02
         }}
         transition={{ duration: 0.3 }}
-        className="w-full max-w-6xl bg-[#0a0a0a]/90 backdrop-blur-xl rounded-3xl shadow-[0_30px_120px_rgba(0,0,0,1),0_0_80px_rgba(0,153,140,0.9)] border border-[#00998c]/40 p-6 md:p-8 relative z-10"
+        className="w-full max-w-6xl bg-[#0a0a0a]/90 backdrop-blur-xl rounded-3xl shadow-[0_30px_120px_rgba(0,0,0,1),0_0_80px_rgba(0,153,140,0.9)] border border-[#00998c]/40 p-4 sm:p-6 md:p-8 relative z-10"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           
@@ -150,23 +150,23 @@ const HackathonAchievement = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="bg-black/50 backdrop-blur-md rounded-2xl p-6 shadow-[0_0_60px_rgba(0,153,140,0.5)] border border-[#00998c]/20"
+            className="bg-black/50 backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-[0_0_60px_rgba(0,153,140,0.5)] border border-[#00998c]/20"
           >
             <div className="text-white space-y-6">
               
               {/* Title Section */}
               <motion.div
                 variants={itemVariants}
-                className="flex items-center gap-4"
+                className="flex items-center gap-3 sm:gap-4"
               >
                 <motion.div
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <FaTrophy className="text-4xl text-[#00998c]" />
+                  <FaTrophy className="text-3xl sm:text-4xl text-[#00998c]" />
                 </motion.div>
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#00998c] to-[#085d56] bg-clip-text text-transparent">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#00998c] to-[#085d56] bg-clip-text text-transparent">
                     Hackathon Achievement {'\u2728'}
                   </h1>
                   <motion.div
@@ -175,7 +175,7 @@ const HackathonAchievement = () => {
                     className="flex items-center gap-2 mt-2"
                   >
                     <FaStar className="text-yellow-400" />
-                    <span className="text-yellow-400 font-semibold">Award Winner</span>
+                    <span className="text-yellow-400 font-semibold text-sm sm:text-base">Award Winner</span>
                     <FaStar className="text-yellow-400" />
                   </motion.div>
                 </div>
@@ -267,7 +267,7 @@ const HackathonAchievement = () => {
             <motion.div 
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-black/50 backdrop-blur-md rounded-2xl p-4 shadow-[0_0_60px_rgba(0,153,140,0.5)] border border-[#00998c]/30 w-full"
+              className="bg-black/50 backdrop-blur-md rounded-2xl p-3 sm:p-4 shadow-[0_0_60px_rgba(0,153,140,0.5)] border border-[#00998c]/30 w-full"
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -278,7 +278,7 @@ const HackathonAchievement = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.05 }}
                   transition={{ duration: 0.6 }}
-                  className="w-full h-[320px] md:h-[360px] object-contain rounded-xl"
+                  className="w-full h-[200px] sm:h-[250px] md:h-[320px] lg:h-[360px] object-contain rounded-xl"
                 />
               </AnimatePresence>
               
@@ -305,28 +305,30 @@ const HackathonAchievement = () => {
             >
               <motion.button
                 onClick={() => navigate('/hackathon-story')}
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl text-lg font-semibold bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_40px_rgba(0,153,140,0.6)] border border-[#00998c]/50 hover:shadow-[0_0_60px_rgba(0,153,140,0.8)] transition-all duration-300"
+                className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base lg:text-lg font-semibold bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_40px_rgba(0,153,140,0.6)] border border-[#00998c]/50 hover:shadow-[0_0_60px_rgba(0,153,140,0.8)] transition-all duration-300"
                 whileHover={{ 
                   boxShadow: '0 0 60px rgba(0,153,140,0.8)',
                   scale: 1.05
                 }}
               >
-                <FaBook className="group-hover:translate-x-2 transition-transform duration-300" />
-                <span>View Hackathon Story</span>
-                <span className="text-xl">📖</span>
+                <FaBook className="group-hover:translate-x-2 transition-transform duration-300 text-sm sm:text-base" />
+                <span className="hidden sm:inline">View Hackathon Story</span>
+                <span className="sm:hidden">Story</span>
+                <span className="text-lg sm:text-xl">{'\ud83d\udcd6'}</span>
               </motion.button>
 
               <motion.button
                 onClick={() => navigate('/home')}
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl text-lg font-semibold bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_40px_rgba(0,153,140,0.6)] border border-[#00998c]/50 hover:shadow-[0_0_60px_rgba(0,153,140,0.8)] transition-all duration-300"
+                className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-xl text-sm sm:text-base lg:text-lg font-semibold bg-gradient-to-r from-[#085d56] to-[#00998c] text-white shadow-[0_0_40px_rgba(0,153,140,0.6)] border border-[#00998c]/50 hover:shadow-[0_0_60px_rgba(0,153,140,0.8)] transition-all duration-300"
                 whileHover={{ 
                   boxShadow: '0 0 60px rgba(0,153,140,0.8)',
                   scale: 1.05
                 }}
               >
-                <span>Go to Portfolio</span>
-                <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
-                <span className="text-xl">{'\ud83d\ude80'}</span>
+                <span className="hidden sm:inline">Go to Portfolio</span>
+                <span className="sm:hidden">Portfolio</span>
+                <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300 text-sm sm:text-base" />
+                <span className="text-lg sm:text-xl">{'\ud83d\ude80'}</span>
               </motion.button>
             </motion.div>
           </motion.div>
