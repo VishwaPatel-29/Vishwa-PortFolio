@@ -4,6 +4,7 @@ import { FaRobot, FaTimes, FaPaperPlane, FaUser, FaStar } from 'react-icons/fa';
 
 const AIChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -117,6 +118,31 @@ const AIChatWidget = () => {
     scrollToBottom();
   }, [messages]);
 
+  // Detect theme changes
+  useEffect(() => {
+    const checkTheme = () => {
+      const isDark = document.documentElement.classList.contains('dark') || 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkMode(isDark);
+    };
+
+    checkTheme();
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', checkTheme);
+
+    return () => {
+      observer.disconnect();
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', checkTheme);
+    };
+  }, []);
+
   // Focus input when chat opens and reset suggestions
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -225,7 +251,11 @@ const AIChatWidget = () => {
       }}
       whileTap={{ scale: 0.95 }}
       onClick={() => handleSuggestionClick(suggestion)}
-      className="px-4 py-2 bg-white/10 backdrop-blur-xl border border-[#00998c]/30 rounded-full text-white text-sm font-medium cursor-pointer whitespace-nowrap hover:bg-white/20 hover:border-[#00998c]/50 transition-all duration-300"
+      className={`px-4 py-2 backdrop-blur-xl border border-[#00998c]/30 rounded-full text-sm font-medium cursor-pointer whitespace-nowrap transition-all duration-300 ${
+        isDarkMode 
+          ? 'bg-white/10 text-white hover:bg-white/20 hover:border-[#00998c]/50'
+          : 'bg-white/80 text-gray-800 hover:bg-gray-100 hover:border-[#00998c]/60'
+      }`}
     >
       {suggestion.text}
     </motion.div>
@@ -255,7 +285,7 @@ const AIChatWidget = () => {
           whileHover={{ 
             scale: 1.1,
             rotate: [0, -5, 5, 0],
-            boxShadow: "0 0 30px rgba(0, 153, 140, 0.6)"
+            boxShadow: isDarkMode ? "0 0 30px rgba(0, 153, 140, 0.6)" : "0 0 30px rgba(0, 153, 140, 0.4)"
           }}
           whileTap={{ scale: 0.95 }}
           animate={{
@@ -268,7 +298,9 @@ const AIChatWidget = () => {
               ease: "easeInOut"
             }
           }}
-          className="relative w-16 h-16 rounded-full bg-gradient-to-r from-[#00998c] to-[#085d56] p-0.5 backdrop-blur-xl shadow-2xl border border-white/20"
+          className={`w-14 h-14 rounded-full bg-gradient-to-r flex items-center justify-center text-white shadow-lg relative overflow-hidden ${
+            isDarkMode ? 'from-[#00998c] to-[#085d56]' : 'from-[#00998c] to-[#007a70]'
+          }`}
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#00998c] to-[#085d56] opacity-75 blur-md animate-pulse"></div>
           <div className="relative w-full h-full rounded-full bg-black/80 backdrop-blur-xl flex items-center justify-center">
@@ -324,13 +356,19 @@ const AIChatWidget = () => {
               damping: 25,
               duration: 0.4
             }}
-            className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] h-[600px] max-h-[80vh] z-[9998]"
+            className="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] h-[600px] max-h-[80vh] z-[9998] md:w-96 md:h-[600px] sm:w-[calc(100vw-2rem)] sm:h-[calc(100vh-8rem)] xs:w-[calc(100vw-1rem)] xs:h-[calc(100vh-6rem)]"
           >
             {/* Chat Container */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
               {/* Animated Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00998c]/20 via-black/90 to-[#085d56]/20">
-                <div className="absolute inset-0 bg-black/40 backdrop-blur-xl"></div>
+              <div className={`absolute inset-0 bg-gradient-to-br ${
+                isDarkMode 
+                  ? 'from-[#00998c]/20 via-black/90 to-[#085d56]/20' 
+                  : 'from-[#00998c]/10 via-white/95 to-[#007a70]/10'
+              }`}>
+                <div className={`absolute inset-0 backdrop-blur-xl ${
+                  isDarkMode ? 'bg-black/40' : 'bg-white/60'
+                }`}></div>
                 
                 {/* Animated Gradient Overlay */}
                 <motion.div
@@ -405,11 +443,17 @@ const AIChatWidget = () => {
                               <FaRobot className="w-4 h-4 text-white" />
                             )}
                           </div>
-                          <div className={`px-4 py-2 rounded-2xl ${
-                            message.type === 'user'
-                              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                              : 'bg-white/10 backdrop-blur-xl text-white border border-white/20'
-                          }`}>
+                          <div
+                            className={`max-w-[80%] px-4 py-3 rounded-2xl ${
+                              message.type === 'user'
+                                ? isDarkMode 
+                                  ? 'bg-gradient-to-r from-[#00998c] to-[#085d56] text-white ml-auto'
+                                  : 'bg-gradient-to-r from-[#00998c] to-[#007a70] text-white ml-auto'
+                                : isDarkMode
+                                  ? 'bg-white/10 backdrop-blur-xl border border-white/20 text-white'
+                                  : 'bg-gray-100/90 backdrop-blur-xl border border-gray-300/50 text-gray-800'
+                            }`}
+                          >
                             <p className="text-sm whitespace-pre-wrap">{message.text}</p>
                             <p className="text-xs opacity-60 mt-1">
                               {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -478,7 +522,9 @@ const AIChatWidget = () => {
                 </AnimatePresence>
 
                 {/* Input Area */}
-                <div className="relative px-4 py-4 border-t border-white/10 backdrop-blur-xl">
+                <div className={`relative px-4 py-4 border-t backdrop-blur-xl ${
+                  isDarkMode ? 'border-white/10' : 'border-gray-300/50'
+                }`}>
                   <div className="flex items-center space-x-2">
                     <input
                       ref={inputRef}
@@ -487,13 +533,21 @@ const AIChatWidget = () => {
                       onChange={handleInputChange}
                       onKeyPress={handleKeyPress}
                       placeholder="Ask me anything about Vishwa..."
-                      className="flex-1 px-4 py-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-[#00998c]/50 focus:ring-2 focus:ring-[#00998c]/20 transition-all"
+                      className={`flex-1 px-4 py-3 backdrop-blur-xl border rounded-full focus:outline-none focus:ring-2 transition-all ${
+                        isDarkMode 
+                          ? 'bg-white/10 border-white/20 text-white placeholder-gray-400 focus:border-[#00998c]/50 focus:ring-[#00998c]/20'
+                          : 'bg-white/80 border-gray-300/50 text-gray-800 placeholder-gray-500 focus:border-[#00998c]/60 focus:ring-[#00998c]/20'
+                      }`}
                     />
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handleSendMessage}
-                      className="w-12 h-12 rounded-full bg-gradient-to-r from-[#00998c] to-[#085d56] flex items-center justify-center text-white shadow-lg"
+                      className={`w-12 h-12 rounded-full bg-gradient-to-r flex items-center justify-center text-white shadow-lg ${
+                        isDarkMode 
+                          ? 'from-[#00998c] to-[#085d56]' 
+                          : 'from-[#00998c] to-[#007a70]'
+                      }`}
                     >
                       <FaPaperPlane className="w-5 h-5" />
                     </motion.button>

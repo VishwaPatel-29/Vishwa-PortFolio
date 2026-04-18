@@ -20,7 +20,7 @@ const skillsData = [
     name: 'HTML', 
     description: 'Semantic HTML5 markup, accessibility standards, and modern web structure',
     level: 'Expert',
-    experience: '4+ years',
+    experience: '10+ months',
     layer: 1,
     icon: 'HTML'
   },
@@ -28,7 +28,7 @@ const skillsData = [
     name: 'CSS', 
     description: 'Advanced CSS3, animations, responsive design, and modern styling techniques',
     level: 'Expert',
-    experience: '4+ years',
+    experience: '10+ months',
     layer: 1,
     icon: 'CSS'
   },
@@ -36,7 +36,7 @@ const skillsData = [
     name: 'JS', 
     description: 'Modern JavaScript ES6+, async programming, DOM manipulation, and frameworks',
     level: 'Expert',
-    experience: '4+ years',
+    experience: '10+ months',
     layer: 1,
     icon: 'JS'
   },
@@ -44,7 +44,7 @@ const skillsData = [
     name: 'React JS', 
     description: 'Advanced React development with hooks, context, performance optimization',
     level: 'Expert',
-    experience: '3+ years',
+    experience: '3+ months',
     layer: 1,
     icon: 'React'
   },
@@ -52,7 +52,7 @@ const skillsData = [
     name: 'Tailwind CSS', 
     description: 'Utility-first CSS framework, responsive design, and rapid UI development',
     level: 'Advanced',
-    experience: '3+ years',
+    experience: '3+ months',
     layer: 1,
     icon: 'Tailwind'
   },
@@ -60,7 +60,7 @@ const skillsData = [
     name: 'Node JS', 
     description: 'Server-side JavaScript runtime, event-driven architecture, and microservices',
     level: 'Advanced',
-    experience: '3+ years',
+    experience: '2+ months',
     layer: 1,
     icon: 'Node'
   },
@@ -68,7 +68,7 @@ const skillsData = [
     name: 'Express JS', 
     description: 'Node.js web framework, REST API development, and middleware integration',
     level: 'Advanced',
-    experience: '2+ years',
+    experience: '3+ months',
     layer: 1,
     icon: 'Express'
   },
@@ -76,7 +76,7 @@ const skillsData = [
     name: 'MongoDB', 
     description: 'NoSQL database design, aggregation pipelines, and performance optimization',
     level: 'Advanced',
-    experience: '2+ years',
+    experience: '4+ months',
     layer: 1,
     icon: 'Mongo'
   },
@@ -86,7 +86,7 @@ const skillsData = [
     name: 'REST APIs', 
     description: 'RESTful API design, HTTP methods, status codes, and API documentation',
     level: 'Advanced',
-    experience: '3+ years',
+    experience: '8+ months',
     layer: 2,
     icon: 'API'
   },
@@ -94,7 +94,7 @@ const skillsData = [
     name: 'Redis', 
     description: 'In-memory data structure store, caching strategies, and session management',
     level: 'Intermediate',
-    experience: '2 years',
+    experience: '1 month',
     layer: 2,
     icon: 'Redis'
   },
@@ -102,7 +102,7 @@ const skillsData = [
     name: 'Vercel', 
     description: 'Deployment platform, serverless functions, performance optimization',
     level: 'Intermediate',
-    experience: '2 years',
+    experience: '1 month',
     layer: 2,
     icon: 'Vercel'
   },
@@ -110,7 +110,7 @@ const skillsData = [
     name: 'Git', 
     description: 'Version control, branching strategies, collaborative development, and CI/CD',
     level: 'Advanced',
-    experience: '3+ years',
+    experience: '10+ months',
     layer: 2,
     icon: 'Git'
   },
@@ -118,7 +118,7 @@ const skillsData = [
     name: 'GitHub', 
     description: 'Git hosting, collaboration, code review, and repository management',
     level: 'Advanced',
-    experience: '3+ years',
+    experience: '10+ months',
     layer: 2,
     icon: 'GitHub'
   },
@@ -126,7 +126,7 @@ const skillsData = [
     name: 'VS Code', 
     description: 'Code editing, extensions, debugging, and development workflow optimization',
     level: 'Expert',
-    experience: '4+ years',
+    experience: '10+ months',
     layer: 2,
     icon: 'VSCode'
   },
@@ -134,7 +134,7 @@ const skillsData = [
     name: 'Postman', 
     description: 'API testing, documentation, automation, and development workflow',
     level: 'Advanced',
-    experience: '2+ years',
+    experience: '6+ months',
     layer: 2,
     icon: 'Postman'
   },
@@ -142,7 +142,7 @@ const skillsData = [
     name: 'NPM', 
     description: 'Package management, dependency handling, and build automation',
     level: 'Advanced',
-    experience: '3+ years',
+    experience: '2 months',
     layer: 2,
     icon: 'NPM'
   }
@@ -434,7 +434,7 @@ const OrbitalSkills = ({ className = "" }) => {
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full h-full orbital-skills-container overflow-hidden ${className}`}
+      className={`relative w-full h-full orbital-skills-container overflow-hidden ${className} sm:min-h-[600px] md:min-h-[700px] lg:min-h-[700px]`}
       style={{ 
         minHeight: '700px',
         display: 'flex',
@@ -445,14 +445,7 @@ const OrbitalSkills = ({ className = "" }) => {
     >
       {/* SVG wrapper for proper scaling */}
       <div 
-        className="absolute inset-0 flex items-center justify-center"
-        style={{
-          width: '100%',
-          height: '100%',
-          maxWidth: '600px',
-          maxHeight: '600px',
-          margin: 'auto'
-        }}
+        className="absolute inset-0 flex items-center justify-center w-full h-full max-w-[600px] max-h-[600px] mx-auto scale-75 sm:scale-90 md:scale-100"
       >
         {/* Equal 2-layer connection lines */}
         <ConnectionLines hoveredSkill={hoveredSkill} />
