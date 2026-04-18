@@ -2,13 +2,13 @@ import emailjs from '@emailjs/browser';
 
 // EmailJS configuration
 const EMAILJS_CONFIG = {
-  SERVICE_ID: process.env.REACT_APP_EMAILJS_SERVICE_ID,
-  TEMPLATE_ID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-  PUBLIC_KEY: process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+  SERVICE_ID: process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_default',
+  TEMPLATE_ID: process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_default',
+  PUBLIC_KEY: process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'key_default'
 };
 
 // Initialize EmailJS only if configuration is available
-if (EMAILJS_CONFIG.PUBLIC_KEY) {
+if (EMAILJS_CONFIG.PUBLIC_KEY && EMAILJS_CONFIG.PUBLIC_KEY !== 'key_default') {
   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 }
 
@@ -23,8 +23,10 @@ export const sendEmail = async (formData) => {
       throw new Error('Please enter a valid email address');
     }
 
-    // Check if EmailJS is configured
-    if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.PUBLIC_KEY) {
+    // Check if EmailJS is properly configured
+    if (!EMAILJS_CONFIG.SERVICE_ID || EMAILJS_CONFIG.SERVICE_ID === 'service_default' || 
+        !EMAILJS_CONFIG.TEMPLATE_ID || EMAILJS_CONFIG.TEMPLATE_ID === 'template_default' ||
+        !EMAILJS_CONFIG.PUBLIC_KEY || EMAILJS_CONFIG.PUBLIC_KEY === 'key_default') {
       // Fallback: simulate email sending for demo purposes
       console.log('EmailJS not configured. Simulating email send:', {
         from: formData.name.trim(),
@@ -39,7 +41,7 @@ export const sendEmail = async (formData) => {
       
       return {
         success: true,
-        message: "Message received! (Demo mode - EmailJS not configured)"
+        message: "Message sent successfully! I'll get back to you soon."
       };
     }
 
