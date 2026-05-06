@@ -327,7 +327,7 @@ const Hero = () => {
             >
               {[
                 { name: 'GitHub', icon: FaGithub, url: 'https://github.com/VishwaPatel-29', color: 'from-gray-700 to-gray-900' },
-                { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/vishwa-patel-8664473a0/', color: 'from-blue-600 to-blue-800' },
+                { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/vishwa-patel-full-stack-developer-8664473a0/', color: 'from-blue-600 to-blue-800' },
                 { name: 'Twitter', icon: FaTwitter, url: 'https://x.com/PatelVishw30565', color: 'from-sky-500 to-sky-700' },
                 { name: 'LeetCode', icon: SiLeetcode, url: 'https://leetcode.com/u/Vishwaa-29/', color: 'from-orange-500 to-orange-700' },
                 { name: 'Gmail', icon: FaEnvelope, url: 'mailto:vishwa29patel.cg@gmail.com', color: 'from-red-500 to-red-700' },
