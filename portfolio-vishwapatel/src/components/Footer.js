@@ -33,7 +33,7 @@ const Footer = () => {
 
   const socialLinks = [
     { name: 'GitHub', icon: FaGithub, url: 'https://github.com/VishwaPatel-29' },
-    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://vishwapatel-portfolio.vercel.app/' },
+    { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/vishwa-patel-8664473a0/' },
     { name: 'Twitter', icon: FaTwitter, url: 'https://x.com/PatelVishw30565' },
     { name: 'LeetCode', icon: SiLeetcode, url: 'https://leetcode.com/u/Vishwaa-29/' },
     { name: 'Gmail', icon: FaEnvelope, url: 'mailto:vishwa29patel.cg@gmail.com' },
