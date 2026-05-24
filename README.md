@@ -281,9 +281,5 @@ Feel free to fork this project and submit pull requests! 🎉
 <div align="center">
   <img src="https://komarev.com/ghpvc/?username=VishwaPatel-29&style=for-the-badge&color=00FF88" alt="Profile Views"/>
   <p>⭐ Star this repository if it inspired you!</p>
-  <p>Made with ❤️ and lots of ☕ by Vishwa Patel</p>
-<<<<<<< HEAD
-</div>
-=======
-</div>
->>>>>>> 4074b8957e471c596b5bd1055e377fd69daf423c
+  <p>Made with lots of ❤️ by Vishwa Patel</p>
+
