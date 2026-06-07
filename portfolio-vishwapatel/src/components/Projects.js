@@ -266,7 +266,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "fullstack",
       liveDemo: "https://gen-zreactwebsite.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Gen-Z-Website-Tailwind_CSS",
-      youtubeDemo: "https://www.youtube.com/watch?v=iPT8OEoBZQ4&t=47s",
+      youtubeDemo: "https://www.youtube.com/watch?v=iPT8OEoBZQ4",
       apiDocumentation: "https://documenter.getpostman.com/view/your-api-docs"
     },
     {
