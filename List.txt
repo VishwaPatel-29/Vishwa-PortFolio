@@ -1,0 +1,6 @@
+1.Fix Navbar
+2.Add Youtube Dmeo Buttons
+3.Add Landing Page with Vishwa 
+4.Fix Project Route UI
+pcchi biju kai lage add krva jevu to bhle baki thyu
+need to implement the things and change some ui for better preview 

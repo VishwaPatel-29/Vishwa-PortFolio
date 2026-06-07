@@ -115,9 +115,6 @@ const UniqueSkillsShowcase = () => {
 
       {/* Main Skills Grid */}
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-          Skills Universe
-        </h2>
         
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
           {skills.map((skill, index) => (
@@ -127,7 +124,7 @@ const UniqueSkillsShowcase = () => {
               onMouseEnter={() => setActiveSkill(skill)}
               onMouseLeave={() => setActiveSkill(null)}
             >
-              <div className="relative w-full aspect-square rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 p-6 transform transition-all duration-300 hover:scale-105 hover:rotate-3 cursor-pointer border border-gray-700 hover:border-gray-600">
+              <div className="relative w-full aspect-square rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 p-3 sm:p-4 md:p-6 transform transition-all duration-300 hover:scale-105 hover:rotate-3 cursor-pointer border border-gray-700 hover:border-gray-600">
                 {/* Glow Effect */}
                 <div 
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -155,7 +152,7 @@ const UniqueSkillsShowcase = () => {
                 </div>
                 
                 {/* Category Badge */}
-                <div className="absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-medium" 
+                <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[10px] font-medium hidden sm:block" 
                      style={{ backgroundColor: `${skill.color}22`, color: skill.color }}>
                   {skill.category}
                 </div>
@@ -163,7 +160,7 @@ const UniqueSkillsShowcase = () => {
               
               {/* Skill Name */}
               <div className="mt-3 text-center">
-                <p className="text-white font-medium group-hover:text-blue-400 transition-colors duration-300">
+                <p className="text-white font-medium group-hover:text-blue-400 transition-colors duration-300 text-sm sm:text-base">
                   {skill.name}
                 </p>
               </div>
@@ -173,7 +170,7 @@ const UniqueSkillsShowcase = () => {
 
         {/* Active Skill Detail */}
         {activeSkill && (
-          <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 border border-gray-700 rounded-2xl p-6 shadow-2xl z-50 max-w-md">
+          <div className="fixed bottom-8 left-4 right-4 sm:left-1/2 sm:transform sm:-translate-x-1/2 bg-gray-900 border border-gray-700 rounded-2xl p-5 shadow-2xl z-50 max-w-md sm:w-full">
             <div className="flex items-center space-x-4">
               <div 
                 style={{

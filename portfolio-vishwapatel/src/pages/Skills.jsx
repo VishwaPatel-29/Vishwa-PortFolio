@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import { FaHome } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import Premium3DSkills from '../components/Premium3DSkills';
 import UniqueSkillsShowcase from '../components/UniqueSkillsShowcase';
 import { Helmet } from 'react-helmet';
 import VP_LOGO from '../assets/VP_LOGO.png';

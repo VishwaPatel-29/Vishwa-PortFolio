@@ -1,0 +1,339 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #111111;
+  --dark: #1e1e1e;
+  --mid: #444444;
+  --gray: #666666;
+  --lgray: #999999;
+  --border: #cccccc;
+  --bg: #ffffff;
+  --accent: #2a2a2a;
+  --link: #1a56db;
+  --section-line: #222222;
+  --left-w: 34%;
+  --right-w: 66%;
+  --page-pad: 28px;
+  --col-gap: 22px;
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 9.5pt;
+  color: var(--dark);
+  background: #e8e8e8;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 48px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--bg);
+  padding: var(--page-pad);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--black);
+}
+
+.header-left h1 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 26pt;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.header-left .title {
+  font-size: 10pt;
+  color: var(--gray);
+  font-weight: 300;
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 8.8pt;
+  color: var(--mid);
+}
+
+.header-right a { color: var(--mid); text-decoration: none; }
+.header-right a:hover { color: var(--dark); }
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-row .icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-row .icon svg {
+  width: 9px;
+  height: 9px;
+  fill: white;
+}
+
+/* ── SOCIAL LINKS ── */
+.social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 8.5pt;
+  color: var(--mid);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.social-links a:hover { color: var(--black); }
+
+.social-links .sicon {
+  width: 18px; height: 18px;
+  border-radius: 4px;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.social-links .sicon svg { width: 10px; height: 10px; fill: white; }
+
+/* ── TWO COLUMNS ── */
+.columns {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+.col-left {
+  width: var(--left-w);
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  padding-right: var(--col-gap);
+}
+
+.col-right {
+  flex: 1;
+}
+
+/* ── SECTION ── */
+.section { margin-bottom: 13px; }
+
+.section-title {
+  font-size: 9pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--black);
+  border-bottom: 1.5px solid var(--black);
+  padding-bottom: 3px;
+  margin-bottom: 7px;
+}
+
+/* ── SKILLS ── */
+.skill-group { margin-bottom: 6px; }
+.skill-group .label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1px;
+}
+.skill-group .vals {
+  font-size: 8.3pt;
+  color: var(--mid);
+  line-height: 1.5;
+}
+
+.skill-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.chip {
+  font-size: 7.5pt;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--mid);
+  background: #f7f7f7;
+}
+
+.chip a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.chip a:hover {
+  color: var(--black);
+  text-decoration: none;
+}
+
+/* ── EDUCATION ── */
+.edu-item { margin-bottom: 8px; }
+.edu-item .inst { font-size: 9pt; font-weight: 700; color: var(--dark); }
+.edu-item .deg  { font-size: 8.5pt; color: var(--mid); }
+.edu-item .year { font-size: 8pt; color: var(--lgray); margin-top: 1px; }
+
+/* ── PROJECTS ── */
+.project-item { margin-bottom: 9px; }
+
+.project-item .proj-name {
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.project-item .proj-tag {
+  font-size: 7.8pt;
+  color: var(--lgray);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.project-item .proj-tech {
+  font-size: 7.8pt;
+  color: var(--gray);
+  margin: 1px 0 2px;
+  font-style: italic;
+}
+
+.project-item .proj-desc {
+  font-size: 8.3pt;
+  color: var(--mid);
+  line-height: 1.55;
+}
+
+.proj-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 3px;
+}
+
+.proj-links a {
+  font-size: 7.8pt;
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid var(--dark);
+}
+
+.proj-links a:hover {
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.proj-links span { color: var(--border); font-size: 8pt; }
+
+/* ── OPEN SOURCE ── */
+.oss-item { margin-bottom: 8px; }
+.oss-item .oss-name { font-size: 9pt; font-weight: 700; color: var(--dark); }
+.oss-item .oss-desc { font-size: 8.3pt; color: var(--mid); line-height: 1.5; margin: 2px 0 3px; }
+
+/* ── HACKATHON ── */
+.hack-item { margin-bottom: 8px; }
+.hack-item .hack-name { font-size: 9pt; font-weight: 700; color: var(--dark); }
+.hack-item .hack-sub  { font-size: 8pt; color: var(--gray); line-height: 1.5; margin-top: 2px; }
+.hack-item .hack-links { display: flex; gap: 8px; margin-top: 3px; }
+
+.hack-item .hack-links a {
+  font-size: 7.8pt;
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid var(--dark);
+}
+
+.hack-item .hack-links a:hover {
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+/* ── LIST ITEMS ── */
+.list-items { list-style: none; }
+.list-items li {
+  font-size: 8.3pt;
+  color: var(--mid);
+  padding: 1.5px 0;
+  padding-left: 10px;
+  position: relative;
+}
+.list-items li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--lgray);
+}
+
+/* ── CERTIFICATES ── */
+.cert-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.cert-chip {
+  font-size: 7.5pt;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: #f0f0f0;
+  color: var(--mid);
+  border: 1px solid #ddd;
+}
+
+.cert-chip a {
+  color: var(--mid);
+  text-decoration: none;
+}
+
+.cert-chip a:hover {
+  color: var(--black);
+  text-decoration: none;
+}
+
+/* ── LANGUAGE ── */
+.lang-row {
+  font-size: 8.5pt;
+  color: var(--mid);
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: white; padding: 0; }
+  .page { box-shadow: none; width: 100%; }
+}

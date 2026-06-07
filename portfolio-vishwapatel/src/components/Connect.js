@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import { sendEmail, validateFormData } from '../services/emailService';
+import { sendEmail } from '../services/emailService';
 import { FaPaperPlane, FaSpinner, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import VP_LOGO from '../assets/VP_LOGO.png';
 
@@ -57,38 +57,34 @@ const Connect = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Validate form
-    const validationErrors = validateFormData(formData);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-    setSubmitMessage('');
-
-    try {
-      const result = await sendEmail(formData);
-      
-      if (result.success) {
-        setSubmitStatus('success');
-        setSubmitMessage('Thank you for your message! I\'ll get back to you soon.');
-        setFormData({ name: '', email: '', message: '' });
-        setErrors({});
-      } else {
-        setSubmitStatus('error');
-        setSubmitMessage(result.error || 'Failed to send message. Please try again.');
+  e.preventDefault();
+  
+  setSubmitStatus('loading');
+  
+  const formData = new FormData(e.target);
+  
+  try {
+    const response = await fetch('https://formspree.io/f/xjgjrkda', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
       }
-    } catch (error) {
+    });
+    
+    if (response.ok) {
+      setSubmitStatus('success');
+      setSubmitMessage('Message sent successfully! I\'ll get back to you soon.');
+      e.target.reset();
+    } else {
       setSubmitStatus('error');
-      setSubmitMessage('An unexpected error occurred. Please try again later.');
-    } finally {
-      setIsSubmitting(false);
+      setSubmitMessage('Failed to send message. Please try again.');
     }
-  };
+  } catch (error) {
+    setSubmitStatus('error');
+    setSubmitMessage('Failed to send message. Please try again.');
+  }
+};
 
   return (
     <section id="connect" className={`py-20 ${isDarkMode ? 'bg-dark-bg' : 'bg-light-bg'}`}>

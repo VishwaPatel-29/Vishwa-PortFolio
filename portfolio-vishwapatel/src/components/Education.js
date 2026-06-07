@@ -111,20 +111,20 @@ const Education = () => {
           className="relative"
         >
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-secondary rounded-full" />
+          <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-secondary rounded-full" />
 
           {educationData.map((edu, index) => (
             <motion.div
               key={edu.id}
               variants={itemVariants}
-              className={`relative flex items-center mb-12 ${
-                index % 2 === 0 ? 'justify-start' : 'justify-end'
-              }`}
+              className={`relative flex items-center mb-12 w-full ${
+                index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
+              } justify-end`}
             >
               {/* Timeline Dot */}
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-primary to-secondary rounded-full z-10 shadow-lg"
+                className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-primary to-secondary rounded-full z-10 shadow-lg"
               />
 
               {/* Content Card */}
@@ -133,7 +133,7 @@ const Education = () => {
                   scale: 1.02,
                   boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
                 }}
-                className={`w-full md:w-5/12 p-6 rounded-2xl ${
+                className={`w-[calc(100%-2.5rem)] md:w-5/12 p-6 rounded-2xl ${
                   isDarkMode ? 'bg-dark-card' : 'bg-light-card'
                 } shadow-xl hover:shadow-2xl transition-all duration-300 ${
                   index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'

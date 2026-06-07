@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from '../pages/Home';
 import AboutPage from '../pages/About';
@@ -13,13 +13,29 @@ import CertificatesPage from '../pages/CertificatesPage';
 import ContactPage from '../pages/ContactPage';
 import HackathonAchievement from '../pages/HackathonAchievement';
 import HackathonStory from '../pages/HackathonStory';
+import LandingPage from '../pages/LandingPage';
+import SignatureLoader from './SignatureLoader';
 import { ThemeProvider } from '../context/ThemeContext';
 import CustomCursor from './CustomCursor';
 import AIChatWidget from './AIChatWidget';
 import '../index.css';
 
+const PopupPageWrapper = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/home');
+    }, 60000); // 60 seconds
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return <HackathonAchievement />;
+};
+
 const AppRouterContent = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Scroll to top on route change
   useEffect(() => {
@@ -27,10 +43,12 @@ const AppRouterContent = () => {
   }, [location]);
 
   return (
-    <div className="min-h-screen transition-colors duration-300 cursor-none">
+    <div className="min-h-screen bg-black transition-colors duration-300 cursor-none">
       <CustomCursor />
       <Routes>
-        <Route path="/" element={<HackathonAchievement />} />
+        <Route path="/popuppage" element={<PopupPageWrapper />} />
+        <Route path="/landingpage" element={<LandingPage />} />
+        <Route path="/" element={<SignatureLoader onComplete={() => navigate('/popuppage')} />} />
         <Route path="/hackathon" element={<HackathonAchievement />} />
         <Route path="/hackathon-story" element={<HackathonStory />} />
         <Route path="/home" element={
@@ -101,15 +119,9 @@ const AppRouterContent = () => {
 };
 
 const AppRouter = () => {
-  // Detect refresh and force redirect to landing page
   useEffect(() => {
-    const navEntries = performance.getEntriesByType("navigation");
-
-    if (navEntries.length > 0 && navEntries[0].type === "reload") {
-      if (window.location.pathname !== "/") {
-        sessionStorage.setItem("redirectPath", window.location.pathname);
-        window.location.href = "/";
-      }
+    if (window.location.pathname !== "/") {
+      window.location.href = "/";
     }
   }, []);
 

@@ -1,3 +1,4 @@
+// Triggering dev server hot-reload compile
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
@@ -12,6 +13,214 @@ import whackamoleImg from '../assets/Whack a mole.png';
 import memoryflipcardImg from '../assets/Memory Flip Card.png';
 import udaanImg from '../assets/Udaan.png';
 import todoImg from '../assets/To-Do.png';
+
+const ProjectCard = ({ project, isDarkMode, setSelectedProject, itemVariants }) => {
+  return (
+    <motion.div
+      variants={itemVariants}
+      whileHover={{
+        scale: 1.08,
+        y: -15,
+        rotateX: 5,
+        rotateY: 5,
+        boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
+      }}
+      whileTap={{
+        scale: 0.98,
+        rotateX: -2,
+        rotateY: -2,
+      }}
+      className={`group cursor-pointer rounded-2xl overflow-hidden p-4 md:p-5 relative flex flex-col ${
+        isDarkMode ? 'bg-dark-card' : 'bg-light-card'
+      } shadow-lg hover:shadow-2xl transition-all duration-300`}
+      onClick={() => setSelectedProject(project)}
+    >
+      {/* Animated Background Effect */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        animate={{
+          background: [
+            'linear-gradient(135deg, rgba(0, 255, 200, 0.1) 0%, transparent 70%)',
+            'linear-gradient(225deg, rgba(0, 153, 140, 0.15) 0%, transparent 60%)',
+            'linear-gradient(315deg, rgba(0, 212, 204, 0.1) 0%, transparent 65%)',
+            'linear-gradient(135deg, rgba(0, 255, 200, 0.1) 0%, transparent 70%)'
+          ]
+        }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+      />
+
+      {/* Project Image */}
+      <div className="relative h-48 overflow-hidden rounded-lg">
+        <motion.img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+          whileHover={{ scale: 1.15, rotate: 2 }}
+          transition={{ duration: 0.5, type: 'spring' }}
+        />
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+            animate={{
+              x: ['-100%', '100%'],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          />
+        </motion.div>
+        <motion.div
+          className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          initial={{ scale: 0, rotate: -180 }}
+          whileHover={{ scale: 1, rotate: 0 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          View Details
+        </motion.div>
+      </div>
+
+      {/* Project Content */}
+      <div className="flex-1 flex flex-col justify-between space-y-3 md:space-y-4 relative z-10 mt-4">
+        <div className="space-y-2">
+          <motion.h3
+            className={`text-xl font-heading font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
+            whileHover={{
+              scale: 1.05,
+              color: '#00d4cc',
+              textShadow: '0 0 15px rgba(0, 212, 204, 0.5)',
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {project.title}
+          </motion.h3>
+
+          <motion.p
+            className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} line-clamp-2`}
+            whileHover={{
+              scale: 1.02,
+              color: isDarkMode ? '#ffffff' : '#000000',
+            }}
+            transition={{ duration: 0.3 }}
+          >
+            {project.description}
+          </motion.p>
+        </div>
+
+        <div className="space-y-3">
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.slice(0, 3).map((tech, techIndex) => (
+              <motion.span
+                key={techIndex}
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: isDarkMode ? '#00d4cc' : '#00998c',
+                  color: '#ffffff',
+                  boxShadow: '0 4px 12px rgba(0, 212, 204, 0.4)',
+                }}
+                transition={{ type: 'spring', stiffness: 400 }}
+                className={`px-2 py-1 text-xs rounded-full cursor-pointer ${isDarkMode
+                    ? 'bg-gray-800 text-gray-300 border border-gray-700'
+                    : 'bg-gray-100 text-gray-700 border border-gray-300'
+                  }`}
+              >
+                {tech}
+              </motion.span>
+            ))}
+            {project.techStack.length > 3 && (
+              <motion.span
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: isDarkMode ? '#00d4cc' : '#00998c',
+                  color: '#ffffff',
+                }}
+                transition={{ type: 'spring', stiffness: 400 }}
+                className={`px-2 py-1 text-xs rounded-full cursor-pointer ${isDarkMode
+                    ? 'bg-gray-800 text-gray-300 border border-gray-700'
+                    : 'bg-gray-100 text-gray-700 border border-gray-300'
+                  }`}
+              >
+                +{project.techStack.length - 3}
+              </motion.span>
+            )}
+          </div>
+
+          {/* Futuristic Segmented Actions Pill */}
+          <div className="flex items-stretch w-full rounded-xl overflow-hidden border border-slate-200/50 dark:border-white/10 bg-slate-100/40 dark:bg-slate-900/30 backdrop-blur-md mt-2">
+            {/* Live Demo segment */}
+            <motion.a
+              href={project.liveDemo}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                backgroundImage: 'linear-gradient(135deg, rgba(0, 153, 140, 0.2) 0%, rgba(0, 212, 204, 0.2) 100%)',
+                color: '#00d4cc',
+              }}
+              whileTap={{ scale: 0.98 }}
+              onClick={(e) => e.stopPropagation()}
+              className={`flex-1 py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 border-r border-slate-200/50 dark:border-white/10 transition-all duration-300 ${
+                isDarkMode ? 'text-gray-300 hover:text-[#00d4cc]' : 'text-slate-600 hover:text-[#00d4cc]'
+              }`}
+            >
+              <FaExternalLinkAlt className="text-[10px]" />
+              <span>Live</span>
+            </motion.a>
+
+            {/* GitHub Code segment */}
+            <motion.a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{
+                backgroundImage: isDarkMode 
+                  ? 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)' 
+                  : 'linear-gradient(135deg, rgba(15,23,42,0.08) 0%, rgba(15,23,42,0.03) 100%)',
+                color: isDarkMode ? '#ffffff' : '#000000',
+              }}
+              whileTap={{ scale: 0.98 }}
+              onClick={(e) => e.stopPropagation()}
+              className={`flex-1 py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 ${
+                project.youtubeDemo ? 'border-r border-slate-200/50 dark:border-white/10' : ''
+              } transition-all duration-300 ${
+                isDarkMode ? 'text-gray-300 hover:text-white' : 'text-slate-600 hover:text-black'
+              }`}
+            >
+              <FaGithub className="text-sm" />
+              <span>Code</span>
+            </motion.a>
+
+            {/* YouTube Demo segment */}
+            {project.youtubeDemo && (
+              <motion.a
+                href={project.youtubeDemo}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{
+                  backgroundImage: 'linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(244, 63, 94, 0.2) 100%)',
+                  color: '#ef4444',
+                }}
+                whileTap={{ scale: 0.98 }}
+                onClick={(e) => e.stopPropagation()}
+                className={`flex-1 py-2.5 text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${
+                  isDarkMode ? 'text-gray-300 hover:text-[#ef4444]' : 'text-slate-600 hover:text-[#ef4444]'
+                }`}
+              >
+                <FaYoutube className="text-sm" />
+                <span>YouTube</span>
+              </motion.a>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const Projects = ({ isHomePage = false }) => {
   const { isDarkMode } = useTheme();
@@ -57,7 +266,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "fullstack",
       liveDemo: "https://gen-zreactwebsite.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Gen-Z-Website-Tailwind_CSS",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-demo-video",
+      youtubeDemo: "https://www.youtube.com/watch?v=iPT8OEoBZQ4&t=47s",
       apiDocumentation: "https://documenter.getpostman.com/view/your-api-docs"
     },
     {
@@ -70,7 +279,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "fullstack",
       liveDemo: "https://lms-clone-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/LMS-Website",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-lms-demo",
+      youtubeDemo: "https://www.youtube.com/watch?v=uO1T1tWKAu4",
       apiDocumentation: "https://documenter.getpostman.com/view/your-lms-api"
     },
     {
@@ -83,7 +292,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "games",
       liveDemo: "https://frontendgame-typingspeedtest-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Frontend_Games/tree/main/05.Typing-Speed-Test",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-typing-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=cYwkyzScQ-g"
     },
     {
       id: 4,
@@ -95,7 +304,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "clones",
       liveDemo: "https://1stwebsite-dreamgames-vishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Website-Clones/tree/main/Dream%20Games",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-dreamgames-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=OoZvZL5VDfo"
     },
     {
       id: 5,
@@ -107,7 +316,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "games",
       liveDemo: "https://fontendgame-tictactoe-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Frontend_Games/tree/main/01.Tic-Tac-Toe",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-tictactoe-demo",
+      youtubeDemo: "https://www.youtube.com/watch?v=8kboRScaTN8",
       apiDocumentation: ""
     },
     {
@@ -133,7 +342,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "games",
       liveDemo: "https://frontendgame-clickcounter-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Frontend_Games/tree/main/02.Click-Counter",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-clickcounter-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=7wnvJMby3vs"
     },
     {
       id: 8,
@@ -145,7 +354,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "clones",
       liveDemo: "https://3rdwebsite-duer-vishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Website-Clones/tree/main/DUER",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-duer-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=quiFYhLVh-c"
     },
     {
       id: 9,
@@ -157,7 +366,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "games",
       liveDemo: "https://frontendgame-colorguess-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Frontend_Games/tree/main/03.Color-Guessing",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-colorguess-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=xlObwCjeMvk"
     },
     {
       id: 10,
@@ -169,7 +378,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "clones",
       liveDemo: "https://4thwebsite-newestbyoncenter-vishwaa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Website-Clones/tree/main/Newest%20By%20Onecenter",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-newest-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=s5mDIVVfsRo"
     },
     {
       id: 11,
@@ -181,7 +390,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "games",
       liveDemo: "https://frontendgame-whackamole-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Frontend_Games/tree/main/04.Whack-a-mole",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-whackamole-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=84gcFZuDayY"
     },
     {
       id: 12,
@@ -193,7 +402,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "clones",
       liveDemo: "https://5thwebsite-ownd-vishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Website-Clones/tree/main/OWND%21",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-ownd-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=TmdsGlKwRjQ"
     },
     {
       id: 13,
@@ -205,7 +414,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "games",
       liveDemo: "https://frontendgame-memoryflipcard-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Frontend_Games/tree/main/06.Memory-Flip_card",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-memory-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=Eh-AWB340bU"
     },
     {
       id: 14,
@@ -217,7 +426,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "clones",
       liveDemo: "https://6thwebsite-udaan-vishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Website-Clones/tree/main/Udaan",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-udaan-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=AlQH2fGay_g"
     },
     {
       id: 15,
@@ -229,7 +438,7 @@ const Projects = ({ isHomePage = false }) => {
       projectType: "frontend",
       liveDemo: "https://frontendtask-todolist-byvishwa.netlify.app/",
       github: "https://github.com/VishwaPatel-29/Frontend_Games/tree/main/07.To-Do",
-      youtubeDemo: "https://www.youtube.com/watch?v=your-todo-demo"
+      youtubeDemo: "https://www.youtube.com/watch?v=CG-JDyDlR0k"
     }
   ];
 
@@ -318,43 +527,13 @@ const Projects = ({ isHomePage = false }) => {
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
               >
                 {projects.filter(p => p.projectType === 'clones').map((project, index) => (
-                  <motion.div
+                  <ProjectCard
                     key={project.id}
-                    variants={itemVariants}
-                    whileHover={{
-                      scale: 1.08,
-                      y: -15,
-                      rotateX: 5,
-                      rotateY: 5,
-                      boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      rotateX: -2,
-                      rotateY: -2,
-                    }}
-                    className={`group cursor-pointer rounded-2xl overflow-hidden p-4 md:p-5 relative ${isDarkMode ? 'bg-dark-card' : 'bg-light-card'
-                      } shadow-lg hover:shadow-2xl transition-all duration-300`}
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <div className="relative h-48 overflow-hidden rounded-lg">
-                      <motion.img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.15, rotate: 2 }}
-                        transition={{ duration: 0.5, type: 'spring' }}
-                      />
-                    </div>
-                    <div className="flex-1 space-y-3 md:space-y-4 relative z-10 mt-4">
-                      <h3 className={`text-xl font-heading font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                        {project.title}
-                      </h3>
-                      <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} line-clamp-2`}>
-                        {project.description}
-                      </p>
-                    </div>
-                  </motion.div>
+                    project={project}
+                    isDarkMode={isDarkMode}
+                    setSelectedProject={setSelectedProject}
+                    itemVariants={itemVariants}
+                  />
                 ))}
               </motion.div>
             </motion.section>
@@ -381,43 +560,13 @@ const Projects = ({ isHomePage = false }) => {
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
               >
                 {projects.filter(p => p.projectType === 'games' || p.title === 'To-Do Frontend Task').map((project, index) => (
-                  <motion.div
+                  <ProjectCard
                     key={project.id}
-                    variants={itemVariants}
-                    whileHover={{
-                      scale: 1.08,
-                      y: -15,
-                      rotateX: 5,
-                      rotateY: 5,
-                      boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      rotateX: -2,
-                      rotateY: -2,
-                    }}
-                    className={`group cursor-pointer rounded-2xl overflow-hidden p-4 md:p-5 relative ${isDarkMode ? 'bg-dark-card' : 'bg-light-card'
-                      } shadow-lg hover:shadow-2xl transition-all duration-300`}
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <div className="relative h-48 overflow-hidden rounded-lg">
-                      <motion.img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.15, rotate: 2 }}
-                        transition={{ duration: 0.5, type: 'spring' }}
-                      />
-                    </div>
-                    <div className="flex-1 space-y-3 md:space-y-4 relative z-10 mt-4">
-                      <h3 className={`text-xl font-heading font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                        {project.title}
-                      </h3>
-                      <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} line-clamp-2`}>
-                        {project.description}
-                      </p>
-                    </div>
-                  </motion.div>
+                    project={project}
+                    isDarkMode={isDarkMode}
+                    setSelectedProject={setSelectedProject}
+                    itemVariants={itemVariants}
+                  />
                 ))}
               </motion.div>
             </motion.section>
@@ -445,43 +594,13 @@ const Projects = ({ isHomePage = false }) => {
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
               >
                 {[projects[0], projects[1]].map((project, index) => (
-                  <motion.div
+                  <ProjectCard
                     key={project.id}
-                    variants={itemVariants}
-                    whileHover={{
-                      scale: 1.08,
-                      y: -15,
-                      rotateX: 5,
-                      rotateY: 5,
-                      boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
-                    }}
-                    whileTap={{
-                      scale: 0.98,
-                      rotateX: -2,
-                      rotateY: -2,
-                    }}
-                    className={`group cursor-pointer rounded-2xl overflow-hidden p-4 md:p-5 relative ${isDarkMode ? 'bg-dark-card' : 'bg-light-card'
-                      } shadow-lg hover:shadow-2xl transition-all duration-300`}
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <div className="relative h-48 overflow-hidden rounded-lg">
-                      <motion.img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.15, rotate: 2 }}
-                        transition={{ duration: 0.5, type: 'spring' }}
-                      />
-                    </div>
-                    <div className="flex-1 space-y-3 md:space-y-4 relative z-10 mt-4">
-                      <h3 className={`text-xl font-heading font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                        {project.title}
-                      </h3>
-                      <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} line-clamp-2`}>
-                        {project.description}
-                      </p>
-                    </div>
-                  </motion.div>
+                    project={project}
+                    isDarkMode={isDarkMode}
+                    setSelectedProject={setSelectedProject}
+                    itemVariants={itemVariants}
+                  />
                 ))}
               </motion.div>
             </motion.section>
@@ -523,189 +642,13 @@ const Projects = ({ isHomePage = false }) => {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8"
           >
             {displayProjects.map((project, index) => (
-              <motion.div
+              <ProjectCard
                 key={project.id}
-                variants={itemVariants}
-                whileHover={{
-                  scale: 1.08,
-                  y: -15,
-                  rotateX: 5,
-                  rotateY: 5,
-                  boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
-                }}
-                whileTap={{
-                  scale: 0.98,
-                  rotateX: -2,
-                  rotateY: -2,
-                }}
-                className={`group cursor-pointer rounded-2xl overflow-hidden p-4 md:p-5 relative ${isDarkMode ? 'bg-dark-card' : 'bg-light-card'
-                  } shadow-lg hover:shadow-2xl transition-all duration-300`}
-                onClick={() => setSelectedProject(project)}
-              >
-                {/* Animated Background Effect */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-cyan-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  animate={{
-                    background: [
-                      'linear-gradient(135deg, rgba(0, 255, 200, 0.1) 0%, transparent 70%)',
-                      'linear-gradient(225deg, rgba(0, 153, 140, 0.15) 0%, transparent 60%)',
-                      'linear-gradient(315deg, rgba(0, 212, 204, 0.1) 0%, transparent 65%)',
-                      'linear-gradient(135deg, rgba(0, 255, 200, 0.1) 0%, transparent 70%)'
-                    ]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                />
-
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden rounded-lg">
-                  <motion.img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.15, rotate: 2 }}
-                    transition={{ duration: 0.5, type: 'spring' }}
-                  />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
-                      animate={{
-                        x: ['-100%', '100%'],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: 'linear',
-                      }}
-                    />
-                  </motion.div>
-                  <motion.div
-                    className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={{ scale: 0, rotate: -180 }}
-                    whileHover={{ scale: 1, rotate: 0 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    View Details
-                  </motion.div>
-                </div>
-
-                {/* Project Content */}
-                <div className="flex-1 space-y-3 md:space-y-4 relative z-10">
-                  <motion.h3
-                    className={`text-xl font-heading font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}
-                    whileHover={{
-                      scale: 1.05,
-                      color: '#00d4cc',
-                      textShadow: '0 0 15px rgba(0, 212, 204, 0.5)',
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {project.title}
-                  </motion.h3>
-
-                  <motion.p
-                    className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} line-clamp-2`}
-                    whileHover={{
-                      scale: 1.02,
-                      color: isDarkMode ? '#ffffff' : '#000000',
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {project.description}
-                  </motion.p>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.slice(0, 3).map((tech, techIndex) => (
-                      <motion.span
-                        key={techIndex}
-                        whileHover={{
-                          scale: 1.1,
-                          backgroundColor: isDarkMode ? '#00d4cc' : '#00998c',
-                          color: '#ffffff',
-                          boxShadow: '0 4px 12px rgba(0, 212, 204, 0.4)',
-                        }}
-                        transition={{ type: 'spring', stiffness: 400 }}
-                        className={`px-2 py-1 text-xs rounded-full cursor-pointer ${isDarkMode
-                            ? 'bg-gray-800 text-gray-300 border border-gray-700'
-                            : 'bg-gray-100 text-gray-700 border border-gray-300'
-                          }`}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                    {project.techStack.length > 3 && (
-                      <motion.span
-                        whileHover={{
-                          scale: 1.1,
-                          backgroundColor: isDarkMode ? '#00d4cc' : '#00998c',
-                          color: '#ffffff',
-                        }}
-                        transition={{ type: 'spring', stiffness: 400 }}
-                        className={`px-2 py-1 text-xs rounded-full cursor-pointer ${isDarkMode
-                            ? 'bg-gray-800 text-gray-300 border border-gray-700'
-                            : 'bg-gray-100 text-gray-700 border border-gray-300'
-                          }`}
-                      >
-                        +{project.techStack.length - 3}
-                      </motion.span>
-                    )}
-                  </div>
-
-                  {/* Project Links */}
-                  <div className="flex gap-3">
-                    <motion.a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: '0 8px 25px rgba(0, 212, 204, 0.4)',
-                        backgroundColor: '#00d4cc',
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex-1 text-center py-2 px-3 btn-primary text-sm glow-effect relative overflow-hidden"
-                    >
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                        initial={{ x: '-100%' }}
-                        whileHover={{ x: '100%' }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <span className="relative z-10">Live Demo</span>
-                    </motion.a>
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{
-                        scale: 1.05,
-                        borderColor: '#00d4cc',
-                        color: '#00d4cc',
-                        boxShadow: '0 8px 25px rgba(0, 212, 204, 0.3)',
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={(e) => e.stopPropagation()}
-                      className={`flex-1 text-center py-2 px-3 rounded-lg text-sm font-medium border-2 transition-all duration-300 relative overflow-hidden ${isDarkMode
-                          ? 'border-gray-600 text-gray-300 hover:bg-gray-700'
-                          : 'border-gray-300 text-gray-700 hover:bg-gray-100'
-                        }`}
-                    >
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-500/20 to-transparent"
-                        initial={{ x: '-100%' }}
-                        whileHover={{ x: '100%' }}
-                        transition={{ duration: 0.3 }}
-                      />
-                      <span className="relative z-10">Code</span>
-                    </motion.a>
-                  </div>
-                </div>
-              </motion.div>
+                project={project}
+                isDarkMode={isDarkMode}
+                setSelectedProject={setSelectedProject}
+                itemVariants={itemVariants}
+              />
             ))}
           </motion.div>
         )}

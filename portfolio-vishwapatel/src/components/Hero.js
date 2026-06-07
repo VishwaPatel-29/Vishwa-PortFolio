@@ -126,19 +126,17 @@ const Hero = () => {
             variants={itemVariants}
             className="flex justify-center lg:justify-start w-full"
           >
-            <div className="image-wrapper" style={{ position: 'relative', top: '-40px', left: '-40px' }}>
+            <div className="image-wrapper relative md:-top-10 md:-left-10">
               <div className="relative group">
                 {/* Glow effect */}
                 <div className="absolute -inset-2 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {/* 3D Flip Container */}
                 <motion.div 
-                  className="relative cursor-pointer"
+                  className="relative cursor-pointer w-[280px] h-[358px] sm:w-[360px] sm:h-[460px] md:w-[430px] md:h-[550px] max-w-full"
                   style={{ 
                     perspective: '1000px',
-                    boxShadow: '0 0 40px rgba(0, 255, 200, 0.2)',
-                    height: '550px',
-                    width: '430px'
+                    boxShadow: '0 0 40px rgba(0, 255, 200, 0.2)'
                   }}
                   whileHover={{ scale: 1.05 }}
                   onHoverStart={() => setIsFlipped(true)}
@@ -323,7 +321,7 @@ const Hero = () => {
             {/* Social Links */}
             <motion.div
               variants={itemVariants}
-              className="flex justify-start space-x-6"
+              className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 w-full"
             >
               {[
                 { name: 'GitHub', icon: FaGithub, url: 'https://github.com/VishwaPatel-29', color: 'from-gray-700 to-gray-900' },
