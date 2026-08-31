@@ -36,7 +36,7 @@ const Education = () => {
       degree: "Bachelor of Technology in Computer Science",
       institution: "Shree Swaminarayan University",
       location: "Kalol,Ahmedabad",
-      period: "2015 - 2029",
+      period: "2025 - 2029",
       description: "Graduated with honors, specializing in Web Development and Machine Learning. Relevant coursework included Data Structures, Algorithms, Web Technologies, and Database Management.",
       achievements: [
         "SGPA: 8.52/10",
